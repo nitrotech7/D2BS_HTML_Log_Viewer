@@ -1,4 +1,4 @@
-# D2BS Log HTML Viewer
+# D2BS HTML Log Viewer
 Parses d2bs.log into html form converting game text color codes into CSS classes for easier viewing in the web browser +searchability.
 	
 ## About
