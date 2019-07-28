@@ -1,0 +1,157 @@
+
+/* Diablo 2 In-Game Console Colors */	
+.white { color: #C5C3C2; }
+.red { color: #c02e18; }
+.green { color: #18fc00; }
+/*.blue { color: #6b6bed; }*/
+.blue { color: #6e81f3; }
+.gold { color: #b88913; }
+.grey { color: #514F52; }
+.black { color: #000; }
+.lightgold { color: #b09c5f; }
+.orange { color: #db7c00; }
+.yellow { color: #e9c158; }
+.darkgreen { color: #338220; }
+.purple { color: #A21FF7; }
+
+html {
+	height: 100%;
+	overflow: hidden;
+}
+
+body {
+	background-color: #3C2D3E;
+	background-image: url("../pix/bg/act1.jpg");
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+	height: 100%;
+	cursor: url('../pix/cursors/1.cur'), auto;
+	text-align: center;
+}
+
+h1 {
+	all: unset; /* cuz of styles in: localhost/share/css/03_headers1.css */
+	font-family: Formal436TL;
+	font-family: ExocetBlizzardOT;
+	font-family: ExocetReaper;
+	font-weight: 500;
+	font-size: 55px;
+	color: #ec2a2a;
+	line-height: 1.2;
+	text-align: center;
+	display: inline-block;
+	margin: 20px;
+	text-shadow: 4px 4px 3px rgb(16, 15, 15);
+}
+
+#d2bsLoadLog {
+
+	font-family: IBMPlexMono;
+	/*font-style: italic;*/
+	font-weight: 450;
+	line-height: 1.3;
+	font-feature-settings: "salt" 1;
+
+/*	font-family: Formal436TL;
+	line-height: 1.3;
+	letter-spacing: 0.01em;
+	
+	font-family: ExocetBlizzardOT;
+	font-weight: 500;
+	line-height: 1.3;
+	letter-spacing: 0.01em;*/
+
+	font-size: 17px;
+
+	color: #C5C3C2;
+	/*color: #81D9C3;*/
+	text-align: left;
+	margin: 0 12%;
+	margin-top: 10px;
+	padding: 20px;
+	border-radius: 14px;
+	background-color: rgba(0,0,0,0.7);
+	max-height: 70%;
+	overflow: auto;
+	box-shadow: 4px 4px 3px rgb(16, 15, 15);
+}
+
+.line {		
+	border-bottom: 1px dotted #515151;
+	padding: 2px 0;
+	/*white-space: nowrap;*/
+}
+
+.linenums {		
+	color: #00e3e9;
+	color: #89e900;
+}
+
+::selection {
+	color: #e9c158 !important;
+	background: #338220 !important;
+}
+
+
+#changeBg {
+	position: relative;
+	display: inline-block;
+	top: 10px;
+	width: 214px;
+	height: 54px;
+	background: url("../pix/buttons/button_off.png") no-repeat;
+}
+
+#changeBg:hover {
+	background: url("../pix/buttons/button_on.png") no-repeat;
+/*	left: 1px;
+	top: 1px;
+*/}
+
+#changeBg:active {
+	background: url("../pix/buttons/button_pressed2.png") no-repeat;
+/*	left: 2px;
+	top: 2px;*/
+}
+
+#info {
+	position: absolute;
+	left: 20%;
+	top: 20%;
+	width: 50%;
+	min-width: 600px;
+	height: fit-content;
+	padding: 30px;
+	border-radius: 10px;
+	background-color: rgba(0,0,0,0.8);
+	box-shadow: 0px 0px 20px 2px rgb(239, 234, 83);
+	overflow: auto;
+	font-family: IBMPlexMono;
+	font-weight: 450;
+	font-size: 17px;
+	line-height: 1.3;
+	color: #d6d0cd;
+	text-align: left;
+}
+
+#info_button {
+	position: relative;
+	display: inline-block;
+	width: 40px;
+	height: 38px;
+	background: url("../pix/buttons/button_info_off.jpg") no-repeat;
+}
+
+#info_button:hover {
+	background: url("../pix/buttons/button_info_on.jpg") no-repeat;
+	left: 1px;
+	top: 1px;
+}
+
+/*#changeBg:active {
+	background: url("../pix/buttons/button_pressed2.png") no-repeat;
+	left: 2px;
+	top: 2px;
+}*/
+

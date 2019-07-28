@@ -1,0 +1,63 @@
+@font-face {
+	font-family: ExocetReaper;
+	src: url('../fonts/ExocetReaper-Medium.ttf') format('truetype');
+	font-style: normal;
+	font-weight: 500;
+	text-rendering: optimizeLegibility;
+}
+
+@font-face {
+	font-family: Formal436TL;
+	src: url('../fonts/Formal436TL.ttf') format('truetype');
+	font-style: normal;
+	font-weight: 400;
+	text-rendering: optimizeLegibility;
+}
+
+@font-face {
+	font-family: IBMPlexMono;
+	src: url('../fonts/IBMPlexMono-Regular.woff2') format('woff2');
+	font-style: normal;
+	font-weight: 400;
+	text-rendering: optimizeLegibility;
+}
+
+@font-face {
+	font-family: IBMPlexMono;
+	src: url('../fonts/IBMPlexMono-Italic.woff2') format('woff2');
+	font-style: italic;
+	font-weight: 400;
+	text-rendering: optimizeLegibility;
+}
+
+@font-face {
+	font-family: IBMPlexMono;
+	src: url('../fonts/IBMPlexMono-Text.woff2') format('woff2');
+	font-style: normal;
+	font-weight: 450;
+	text-rendering: optimizeLegibility;
+}
+
+@font-face {
+	font-family: IBMPlexMono;
+	src: url('../fonts/IBMPlexMono-TextItalic.woff2') format('woff2');
+	font-style: italic;
+	font-weight: 450;
+	text-rendering: optimizeLegibility;
+}
+
+@font-face {
+	font-family: IBMPlexMono;
+	src: url('../fonts/IBMPlexMono-SemiBold.woff2') format('woff2');
+	font-style: normal;
+	font-weight: 600;
+	text-rendering: optimizeLegibility;
+}
+
+@font-face {
+	font-family: IBMPlexMono;
+	src: url('../fonts/IBMPlexMono-SemiBoldItalic.woff2') format('woff2');
+	font-style: italic;
+	font-weight: 600;
+	text-rendering: optimizeLegibility;
+}
