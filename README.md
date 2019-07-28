@@ -7,7 +7,7 @@ I made this tool for easier viewing of the d2bs.log file, which is basically wha
 ## Usage
 Place the master folder in your d2bs folder (ie. D:\Games\D2kolbot\trunk\d2bs\d2bs_log_html_viewer). Open d2bs_log_parser.bat in a text editor and configure how you want the lines to be parsed: last X lines -OR- from line X to line Y (just comment/uncomment the method of your choice). When done, save it and run it. The html file will automatically open in Chrome (change to whatever web browser you use in the batch file).
 
-Sample screenshots:
+### Sample screenshots:
 
 ![Imgur](https://i.imgur.com/oHZcDAN.jpg)
 ![Imgur](https://i.imgur.com/sZ41sr9.jpg)
