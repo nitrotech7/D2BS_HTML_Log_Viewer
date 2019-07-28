@@ -5,9 +5,9 @@ Parses d2bs.log into html form converting game text color codes into CSS classes
 I made this tool for easier viewing of the d2bs.log file, which is basically whatever is outputed in the console during botting. Since [d2bs](https://github.com/noah-/d2bs) unfortunately has no debugger atm, if you are making custom kolbot scripts you often have to use print(); commands throughout your code to know wtf your bot is actually doing. You can view the console in game by pressing the Home key, but the text is terribly hard to read and analyze (D2 is a 20 year old so resolution sucks bad). So to make it easier to analyze the console output I created this niffty tool that parses the log file (according to the amount of lines you want it to return), replaces the in-game color codes to CSS color classes and outputs an html file that auto opens in Chrome after finishing (~2 sec). 
 
 ## Usage
-Place the master folder in your d2bs folder (ie. D:\Games\D2kolbot\trunk\d2bs\d2bs_log_html_viewer). Open d2bs_log_parser.bat in a text editor and configure how you want the lines to be parsed (last X lines -OR- from line X to line Y). When done, save it and run it. The html file will automatically open in Chrome (change to whatever web browser you use in the batch file).
+Place the master folder in your d2bs folder (ie. D:\Games\D2kolbot\trunk\d2bs\d2bs_log_html_viewer). Open d2bs_log_parser.bat in a text editor and configure how you want the lines to be parsed: last X lines -OR- from line X to line Y (just comment/uncomment the method of your choice). When done, save it and run it. The html file will automatically open in Chrome (change to whatever web browser you use in the batch file).
 
-See sample screenshots:
+Sample screenshots:
 
 ![Imgur](https://i.imgur.com/oHZcDAN.jpg)
 ![Imgur](https://i.imgur.com/sZ41sr9.jpg)
