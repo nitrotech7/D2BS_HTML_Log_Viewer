@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>D2BS Log HTML Viewer</title>
+</head>
+
+<link rel="stylesheet" href="../css/fonts.css">
+<link rel="stylesheet" href="../css/style.css">
+
+<body>
+
+<div id="info" style="display: none;">
+	Parses d2bs.log into html form, converting game text color codes into CSS classes for easier viewing in the web browser.
+	
+	ABOUT:
+	-----------
+	I made this tool for easier viewing of the d2bs.log file, which is basically whatever is outputed in the console during botting. Since d2bs has no debugger (unfortunately), if you are making custom kolbot scripts you often have to use print() commands to know wtf your bot is actually doing. You can view the console in game by pressing the Home key, but the text is terribly hard to read and analyze (D2 is a 20 year old so resolution sucks bad). So to make it easier to analyze the console output I created this niffty tool that parses the log file (according to the amount of lines you want it to return), replaces the in-game color codes to CSS color classes and outputs an html file that auto opens in Chrome after finishing (~2 sec). 
+
+	USAGE:
+	-----------
+	Place the master folder in your d2bs folder (ie. D:\Games\D2kolbot\trunk\d2bs\d2bs_log_html_viewer). Open d2bs_log_parser.bat in a text editor and configure how you want the lines to be parsed (last X lines -OR- from line X to line Y). When done, save it and run it. The html file will automatically open in Chrome (change to whatever web browser you use in the batch file).
+
+	Enjoy :) See screenshots for examples.
+</div>
+
+<div id="info_button" onclick="showHideID('info')"></div>
+<h1>D2BS Html Log Viewer</h1>
+<div id='changeBg'></div>
+
+<div id='d2bsLoadLog'><div class='line'><span class='linenums'>1</span>| [08/07/19 02:48:52] </span><span class='green'>D2BS</span><span class='white'> :: Stopping all scripts</span></div>
+<div class='line'><span class='linenums'>2</span>| [08/07/19 02:48:52] Script default.dbj ended</span></div>
+<div class='line'><span class='linenums'>3</span>| [08/07/19 02:48:52] ========================================</span></div>
+<div class='line'><span class='linenums'>4</span>| [08/07/19 02:48:52] Script tools\heartbeat.js ended</span></div>
+<div class='line'><span class='linenums'>5</span>| [08/07/19 02:48:52] Script tools\maphelper.js ended</span></div>
+<div class='line'><span class='linenums'>6</span>| [08/07/19 02:48:52] Script tools\mapthread.js ended</span></div>
+<div class='line'><span class='linenums'>7</span>| [08/07/19 02:48:52] Script tools\party.js ended</span></div>
+<div class='line'><span class='linenums'>8</span>| [08/07/19 02:48:52] Script tools\toolsthread.js ended</span></div>
+<div class='line'><span class='linenums'>9</span>| [08/07/19 02:48:52] Script tools\townchicken.js ended</span></div>
+<div class='line'><span class='linenums'>10</span>| [08/07/19 02:48:52] </span><span class='green'>D2BS</span><span class='white'> :: Started default.dbj</span></div>
+<div class='line'><span class='linenums'>11</span>| [08/07/19 02:48:52] </span><span class='gold'>Loaded NIP: </span><span class='green'>bot_cain_drop.nip</span><span class='gold'>. Lines: </span><span class='green'>459</span><span class='gold'>. Valid entries: </span><span class='green'>156. </span><span class='gold'>Time: </span><span class='green'>0 ms</span></div>
+<div class='line'><span class='linenums'>12</span>| [08/07/19 02:48:52] </span><span class='green'>Fast pickit active.</span></div>
+<div class='line'><span class='linenums'>13</span>| [08/07/19 02:48:52] </span><span class='green'>Starting script: </span><span class='yellow'>Mausoleum</span></div>
+<div class='line'><span class='linenums'>14</span>| [08/07/19 02:48:52] Heartbeat loaded</span></div>
+<div class='line'><span class='linenums'>15</span>| [08/07/19 02:48:52] </span><span class='yellow'>Map Thread Loaded</span></div>
+<div class='line'><span class='linenums'>16</span>| [08/07/19 02:48:52] </span><span class='green'>Party thread loaded. Mode: Accept</span></div>
+<div class='line'><span class='linenums'>17</span>| [08/07/19 02:48:52] 0 entries in shit list.</span></div>
+<div class='line'><span class='linenums'>18</span>| [08/07/19 02:48:53] </span><span class='green'>Loading MyStuff.js !</span></div>
+<div class='line'><span class='linenums'>19</span>| [08/07/19 02:48:53] </span><span class='green'>ToolsThread loaded!!</span></div>
+<div class='line'><span class='linenums'>20</span>| [08/07/19 02:48:53] </span><span class='blue'>Start ToolsThread script</span></div>
+<div class='line'><span class='linenums'>21</span>| [08/07/19 02:48:58] </span><span class='green'>D2BS</span><span class='white'> :: Started Console Script</span></div>
+<div class='line'><span class='linenums'>22</span>| [08/07/19 02:48:58] D2BS Engine startup complete. 1.5.1880U</span></div>
+<div class='line'><span class='linenums'>23</span>| [08/07/19 02:48:58] SoloMFingMule</span></div>
+<div class='line'><span class='linenums'>24</span>| [08/07/19 02:48:58] </span><span class='green'>D2BS</span><span class='white'> :: Engine startup complete!</span></div>
+<div class='line'><span class='linenums'>25</span>| [08/07/19 02:48:58] </span><span class='green'>D2BS</span><span class='white'> :: Switched to profile SoloMFingMule</span></div>
+<div class='line'><span class='linenums'>26</span>| [08/07/19 02:48:58] </span><span class='green'>D2BS</span><span class='white'> :: Starting D2BotLead.dbj</span></div>
+<div class='line'><span class='linenums'>27</span>| [08/07/19 02:48:58] </span><span class='green'>D2BS</span><span class='white'> :: D2BotLead.dbj running.</span></div>
+<div class='line'><span class='linenums'>28</span>| [08/07/19 02:49:00] Recieved Game Info</span></div>
+<div class='line'><span class='linenums'>29</span>| [08/07/19 02:49:00] Heartbeat loaded</span></div>
+<div class='line'><span class='linenums'>30</span>| [08/07/19 02:50:17] Creating Game: emefin681</span></div>
+<div class='line'><span class='linenums'>31</span>| [08/07/19 02:50:19] Updating Status</span></div>
+<div class='line'><span class='linenums'>32</span>| [08/07/19 02:50:19] </span><span class='green'>D2BS</span><span class='white'> :: Starting default.dbj</span></div>
+<div class='line'><span class='linenums'>33</span>| [08/07/19 02:50:19] </span><span class='green'>D2BS</span><span class='white'> :: default.dbj running.</span></div>
+<div class='line'><span class='linenums'>34</span>| [08/07/19 02:50:19] </span><span class='gold'>Loaded NIP: </span><span class='green'>bot_cain_drop.nip</span><span class='gold'>. Lines: </span><span class='green'>459</span><span class='gold'>. Valid entries: </span><span class='green'>156. </span><span class='gold'>Time: </span><span class='green'>15 ms</span></div>
+<div class='line'><span class='linenums'>35</span>| [08/07/19 02:50:19] </span><span class='green'>Fast pickit active.</span></div>
+<div class='line'><span class='linenums'>36</span>| [08/07/19 02:50:19] </span><span class='green'>Starting script: </span><span class='yellow'>Mausoleum</span></div>
+<div class='line'><span class='linenums'>37</span>| [08/07/19 02:50:19] </span><span class='yellow'>Map Thread Loaded</span></div>
+<div class='line'><span class='linenums'>38</span>| [08/07/19 02:50:19] </span><span class='green'>Party thread loaded. Mode: Accept</span></div>
+<div class='line'><span class='linenums'>39</span>| [08/07/19 02:50:19] 0 entries in shit list.</span></div>
+<div class='line'><span class='linenums'>40</span>| [08/07/19 02:50:19] </span><span class='green'>Loading MyStuff.js !</span></div>
+<div class='line'><span class='linenums'>41</span>| [08/07/19 02:50:19] </span><span class='green'>ToolsThread loaded!!</span></div>
+<div class='line'><span class='linenums'>42</span>| [08/07/19 02:50:19] </span><span class='blue'>Start ToolsThread script</span></div>
+<div class='line'><span class='linenums'>43</span>| [08/07/19 02:50:31] </span><span class='lightgold'>Min/Max/Avg # of Unique Monsters for Crypt: 5/7/6</span></div>
+<div class='line'><span class='linenums'>44</span>| [08/07/19 02:50:31] </span><span class='lightgold'>Min/Max/Avg # of Unique Packs for Crypt: 4/6/5</span></div>
+<div class='line'><span class='linenums'>45</span>| [08/07/19 02:50:31] </span><span class='red'># of Rooms to Skip: 15</span></div>
+<div class='line'><span class='linenums'>46</span>| [08/07/19 02:50:31] </span><span class='green'># of Rooms to Visit: 18</span></div>
+<div class='line'><span class='linenums'>47</span>| [08/07/19 02:52:38] </span><span class='gold'>MF: </span><span class='white'>234 </span><span class='gold'>GF: </span><span class='white'>106 </span><span class='red'>FR: </span><span class='white'>197 </span><span class='blue'>CR: </span><span class='white'>186 </span><span class='yellow'>LR: </span><span class='white'>176 </span><span class='green'>PR: </span><span class='white'>177</span></div>
+<div class='line'><span class='linenums'>48</span>| [08/07/19 02:52:38] FCR: 105 IAS: 0 FBR: 0 FHR: 60 FRW: 40</span></div>
+<div class='line'><span class='linenums'>49</span>| [08/07/19 02:52:38] CB: 0 DS: 0 OW: 0 </span><span class='red'>LL: </span><span class='white'>0 </span><span class='blue'>ML: </span><span class='white'>7 DR: 10% + 0 MDR: 0% + 10</span></div>
+<div class='line'><span class='linenums'>50</span>| [08/07/19 02:52:38] My coord: 10220, 5012</span></div>
+<div class='line'><span class='linenums'>51</span>| [08/07/19 02:52:40] </span><span class='green'>D2BS</span><span class='white'> :: Stopping all scripts</span></div>
+<div class='line'><span class='linenums'>52</span>| [08/07/19 02:52:40] Script d2botlead.dbj ended</span></div>
+<div class='line'><span class='linenums'>53</span>| [08/07/19 02:52:40] Script default.dbj ended</span></div>
+<div class='line'><span class='linenums'>54</span>| [08/07/19 02:52:40] ========================================</span></div>
+<div class='line'><span class='linenums'>55</span>| [08/07/19 02:52:40] Script tools\heartbeat.js ended</span></div>
+<div class='line'><span class='linenums'>56</span>| [08/07/19 02:52:40] Script tools\maphelper.js ended</span></div>
+<div class='line'><span class='linenums'>57</span>| [08/07/19 02:52:40] Script tools\mapthread.js ended</span></div>
+<div class='line'><span class='linenums'>58</span>| [08/07/19 02:52:40] Script tools\party.js ended</span></div>
+<div class='line'><span class='linenums'>59</span>| [08/07/19 02:52:40] Script tools\toolsthread.js ended</span></div>
+<div class='line'><span class='linenums'>60</span>| [08/07/19 02:52:40] Script tools\townchicken.js ended</span></div>
+<div class='line'><span class='linenums'>61</span>| [08/07/19 02:52:40] </span><span class='green'>D2BS</span><span class='white'> :: Started default.dbj</span></div>
+<div class='line'><span class='linenums'>62</span>| [08/07/19 02:52:40] </span><span class='gold'>Loaded NIP: </span><span class='green'>bot_cain_drop.nip</span><span class='gold'>. Lines: </span><span class='green'>459</span><span class='gold'>. Valid entries: </span><span class='green'>156. </span><span class='gold'>Time: </span><span class='green'>0 ms</span></div>
+<div class='line'><span class='linenums'>63</span>| [08/07/19 02:52:40] </span><span class='green'>Fast pickit active.</span></div>
+<div class='line'><span class='linenums'>64</span>| [08/07/19 02:52:40] </span><span class='yellow'>Map Thread Loaded</span></div>
+<div class='line'><span class='linenums'>65</span>| [08/07/19 02:52:40] Heartbeat loaded</span></div>
+<div class='line'><span class='linenums'>66</span>| [08/07/19 02:52:40] </span><span class='green'>Party thread loaded. Mode: Accept</span></div>
+<div class='line'><span class='linenums'>67</span>| [08/07/19 02:52:40] 0 entries in shit list.</span></div>
+<div class='line'><span class='linenums'>68</span>| [08/07/19 02:52:40] </span><span class='green'>Loading MyStuff.js !</span></div>
+<div class='line'><span class='linenums'>69</span>| [08/07/19 02:52:40] </span><span class='green'>ToolsThread loaded!!</span></div>
+<div class='line'><span class='linenums'>70</span>| [08/07/19 02:52:40] </span><span class='blue'>Start ToolsThread script</span></div>
+<div class='line'><span class='linenums'>71</span>| [08/07/19 02:52:40] </span><span class='green'>Starting script: </span><span class='yellow'>Mausoleum</span></div>
+<div class='line'><span class='linenums'>72</span>| [08/07/19 02:52:47] </span><span class='green'>D2BS</span><span class='white'> :: Started Console Script</span></div>
+<div class='line'><span class='linenums'>73</span>| [08/07/19 02:52:47] D2BS Engine startup complete. 1.5.1880U</span></div>
+<div class='line'><span class='linenums'>74</span>| [08/07/19 02:52:47] </span><span class='green'>D2BS</span><span class='white'> :: Engine startup complete!</span></div>
+<div class='line'><span class='linenums'>75</span>| [08/07/19 02:52:47] </span><span class='green'>D2BS</span><span class='white'> :: Switched to profile SoloMFingMule</span></div>
+<div class='line'><span class='linenums'>76</span>| [08/07/19 02:52:47] </span><span class='green'>D2BS</span><span class='white'> :: Starting D2BotLead.dbj</span></div>
+<div class='line'><span class='linenums'>77</span>| [08/07/19 02:52:47] SoloMFingMule</span></div>
+<div class='line'><span class='linenums'>78</span>| [08/07/19 02:52:47] </span><span class='green'>D2BS</span><span class='white'> :: D2BotLead.dbj running.</span></div>
+<div class='line'><span class='linenums'>79</span>| [08/07/19 02:52:49] Recieved Game Info</span></div>
+<div class='line'><span class='linenums'>80</span>| [08/07/19 02:52:49] Heartbeat loaded</span></div>
+<div class='line'><span class='linenums'>81</span>| [08/07/19 02:52:50] D2BS Shutdown complete.</span></div>
+<div class='line'><span class='linenums'>82</span>| [08/07/19 02:54:51] </span><span class='green'>D2BS</span><span class='white'> :: Started Console Script</span></div>
+<div class='line'><span class='linenums'>83</span>| [08/07/19 02:54:51] D2BS Engine startup complete. 1.5.1880U</span></div>
+<div class='line'><span class='linenums'>84</span>| [08/07/19 02:54:51] </span><span class='green'>D2BS</span><span class='white'> :: Engine startup complete!</span></div>
+<div class='line'><span class='linenums'>85</span>| [08/07/19 02:54:51] </span><span class='green'>D2BS</span><span class='white'> :: Switched to profile SP_GoldenDeth</span></div>
+<div class='line'><span class='linenums'>86</span>| [08/07/19 02:54:51] </span><span class='green'>D2BS</span><span class='white'> :: Starting D2BotLead.dbj</span></div>
+<div class='line'><span class='linenums'>87</span>| [08/07/19 02:54:51] </span><span class='green'>D2BS</span><span class='white'> :: D2BotLead.dbj running.</span></div>
+<div class='line'><span class='linenums'>88</span>| [08/07/19 02:54:51] SP_GoldenDeth</span></div>
+<div class='line'><span class='linenums'>89</span>| [08/07/19 02:54:53] Recieved Game Info</span></div>
+<div class='line'><span class='linenums'>90</span>| [08/07/19 02:54:53] Heartbeat loaded</span></div>
+<div class='line'><span class='linenums'>91</span>| [08/07/19 02:54:55] </span><span class='green'>D2BS</span><span class='white'> :: Starting default.dbj</span></div>
+<div class='line'><span class='linenums'>92</span>| [08/07/19 02:54:55] </span><span class='green'>D2BS</span><span class='white'> :: default.dbj running.</span></div>
+<div class='line'><span class='linenums'>93</span>| [08/07/19 02:54:55] </span><span class='green'>Fast pickit active.</span></div>
+<div class='line'><span class='linenums'>94</span>| [08/07/19 02:54:55] </span><span class='green'>Starting script: </span><span class='yellow'>AncientTunnels</span></div>
+<div class='line'><span class='linenums'>95</span>| [08/07/19 02:54:55] </span><span class='yellow'>Map Thread Loaded</span></div>
+<div class='line'><span class='linenums'>96</span>| [08/07/19 02:54:55] </span><span class='green'>Party thread loaded. Mode: Accept</span></div>
+<div class='line'><span class='linenums'>97</span>| [08/07/19 02:54:55] 0 entries in shit list.</span></div>
+<div class='line'><span class='linenums'>98</span>| [08/07/19 02:54:56] </span><span class='green'>Loading MyStuff.js !</span></div>
+<div class='line'><span class='linenums'>99</span>| [08/07/19 02:54:56] </span><span class='green'>ToolsThread loaded!!</span></div>
+<div class='line'><span class='linenums'>100</span>| [08/07/19 02:54:56] </span><span class='blue'>Start ToolsThread script</span></div>
+<div class='line'><span class='linenums'>101</span>| [08/07/19 02:54:56] Updating Status</span></div>
+<div class='line'><span class='linenums'>102</span>| [08/07/19 02:55:09] </span><span class='lightgold'>Min/Max/Avg # of Unique Monsters for Ancient Tunnels: 6/8/7</span></div>
+<div class='line'><span class='linenums'>103</span>| [08/07/19 02:55:09] </span><span class='lightgold'>Min/Max/Avg # of Unique Packs for Ancient Tunnels: 5/7/6</span></div>
+<div class='line'><span class='linenums'>104</span>| [08/07/19 02:55:09] </span><span class='red'># of Chest Rooms: 3</span></div>
+<div class='line'><span class='linenums'>105</span>| [08/07/19 02:55:09] </span><span class='red'># of Rooms to Skip: 0</span></div>
+<div class='line'><span class='linenums'>106</span>| [08/07/19 02:55:09] </span><span class='green'># of Rooms to Visit: 8</span></div>
+<div class='line'><span class='linenums'>107</span>| [08/07/19 02:59:06] D2BS Shutdown complete.</span></div>
+<div class='line'><span class='linenums'>108</span>| [08/07/19 18:30:06] </span><span class='green'>D2BS</span><span class='white'> :: Started Console Script</span></div>
+<div class='line'><span class='linenums'>109</span>| [08/07/19 18:30:06] D2BS Engine startup complete. 1.5.1880U</span></div>
+<div class='line'><span class='linenums'>110</span>| [08/07/19 18:30:06] </span><span class='green'>D2BS</span><span class='white'> :: Engine startup complete!</span></div>
+<div class='line'><span class='linenums'>111</span>| [08/07/19 18:30:06] </span><span class='green'>D2BS</span><span class='white'> :: Switched to profile SP_GoldenDeth</span></div>
+<div class='line'><span class='linenums'>112</span>| [08/07/19 18:30:06] </span><span class='green'>D2BS</span><span class='white'> :: Starting D2BotLead.dbj</span></div>
+<div class='line'><span class='linenums'>113</span>| [08/07/19 18:30:06] </span><span class='green'>D2BS</span><span class='white'> :: D2BotLead.dbj running.</span></div>
+<div class='line'><span class='linenums'>114</span>| [08/07/19 18:30:06] SP_GoldenDeth</span></div>
+<div class='line'><span class='linenums'>115</span>| [08/07/19 18:30:08] D2BS Shutdown complete.</span></div>
+<div class='line'><span class='linenums'>116</span>| [08/07/19 18:30:19] </span><span class='green'>D2BS</span><span class='white'> :: Started Console Script</span></div>
+<div class='line'><span class='linenums'>117</span>| [08/07/19 18:30:19] D2BS Engine startup complete. 1.5.1880U</span></div>
+<div class='line'><span class='linenums'>118</span>| [08/07/19 18:30:19] </span><span class='green'>D2BS</span><span class='white'> :: Engine startup complete!</span></div>
+<div class='line'><span class='linenums'>119</span>| [08/07/19 18:30:19] SP_GoldenDeth</span></div>
+<div class='line'><span class='linenums'>120</span>| [08/07/19 18:30:19] </span><span class='green'>D2BS</span><span class='white'> :: Switched to profile SP_GoldenDeth</span></div>
+<div class='line'><span class='linenums'>121</span>| [08/07/19 18:30:19] </span><span class='green'>D2BS</span><span class='white'> :: Starting D2BotLead.dbj</span></div>
+<div class='line'><span class='linenums'>122</span>| [08/07/19 18:30:19] </span><span class='green'>D2BS</span><span class='white'> :: D2BotLead.dbj running.</span></div>
+<div class='line'><span class='linenums'>123</span>| [08/07/19 18:30:22] Recieved Game Info</span></div>
+<div class='line'><span class='linenums'>124</span>| [08/07/19 18:30:22] Heartbeat loaded</span></div>
+<div class='line'><span class='linenums'>125</span>| [08/07/19 18:30:23] Error: Invalid character name 12</span></div>
+<div class='line'><span class='linenums'>126</span>| [08/07/19 18:30:25] Error: Invalid character name 12</span></div>
+<div class='line'><span class='linenums'>127</span>| [08/07/19 18:30:28] Error: Invalid character name 12</span></div>
+<div class='line'><span class='linenums'>128</span>| [08/07/19 18:30:31] Error: Invalid character name 12</span></div>
+<div class='line'><span class='linenums'>129</span>| [08/07/19 18:30:33] Error: Invalid character name 12</span></div>
+<div class='line'><span class='linenums'>130</span>| [08/07/19 18:30:34] D2BS Shutdown complete.</span></div>
+<div class='line'><span class='linenums'>131</span>| [08/07/19 18:30:36] </span><span class='green'>D2BS</span><span class='white'> :: Started Console Script</span></div>
+<div class='line'><span class='linenums'>132</span>| [08/07/19 18:30:36] D2BS Engine startup complete. 1.5.1880U</span></div>
+<div class='line'><span class='linenums'>133</span>| [08/07/19 18:30:36] </span><span class='green'>D2BS</span><span class='white'> :: Engine startup complete!</span></div>
+<div class='line'><span class='linenums'>134</span>| [08/07/19 18:30:36] </span><span class='green'>D2BS</span><span class='white'> :: Switched to profile Manual-1</span></div>
+<div class='line'><span class='linenums'>135</span>| [08/07/19 18:30:36] </span><span class='green'>D2BS</span><span class='white'> :: Starting D2BotMap.dbj</span></div>
+<div class='line'><span class='linenums'>136</span>| [08/07/19 18:30:36] </span><span class='green'>D2BS</span><span class='white'> :: D2BotMap.dbj running.</span></div>
+<div class='line'><span class='linenums'>137</span>| [08/07/19 18:30:37] mode: 1381968, msg: Handle</span></div>
+<div class='line'><span class='linenums'>138</span>| [08/07/19 18:30:38] Heartbeat loaded</span></div>
+<div class='line'><span class='linenums'>139</span>| [08/07/19 18:30:50] </span><span class='green'>D2BS</span><span class='white'> :: Starting default.dbj</span></div>
+<div class='line'><span class='linenums'>140</span>| [08/07/19 18:30:50] </span><span class='green'>D2BS</span><span class='white'> :: default.dbj running.</span></div>
+<div class='line'><span class='linenums'>141</span>| [08/07/19 18:30:50] </span><span class='yellow'>Map Thread Loaded</span></div>
+<div class='line'><span class='linenums'>142</span>| [08/07/19 18:30:50] </span><span class='green'>Loading MyStuff.js !</span></div>
+<div class='line'><span class='linenums'>143</span>| [08/07/19 18:30:50] </span><span class='green'>ToolsThread loaded!!</span></div>
+<div class='line'><span class='linenums'>144</span>| [08/07/19 18:30:50] </span><span class='blue'>Start ToolsThread script</span></div>
+<div class='line'><span class='linenums'>145</span>| [08/07/19 18:30:57] </span><span class='green'>SilversVoodoo () entered:  @ 7/8/2019 [18:30:57]</span></div>
+<div class='line'><span class='linenums'>146</span>| [08/07/19 18:31:35] pause mapthread</span></div>
+<div class='line'><span class='linenums'>147</span>| [08/07/19 18:31:36] resume mapthread</span></div>
+<div class='line'><span class='linenums'>148</span>| [08/07/19 18:31:36] Script default.dbj ended</span></div>
+<div class='line'><span class='linenums'>149</span>| [08/07/19 18:31:36] Script tools\maphelper.js ended</span></div>
+<div class='line'><span class='linenums'>150</span>| [08/07/19 18:31:36] Script tools\mapthread.js ended</span></div>
+<div class='line'><span class='linenums'>151</span>| [08/07/19 18:31:36] Script tools\toolsthread.js ended</span></div>
+<div class='line'><span class='linenums'>152</span>| [08/07/19 18:31:37] </span><span class='green'>SilversVoodoo () was 215 hr, 12 min, 30 sec [215:12:30] in </span></div>
+<div class='line'><span class='linenums'>153</span>| [08/07/19 18:31:41] </span><span class='green'>D2BS</span><span class='white'> :: Starting default.dbj</span></div>
+<div class='line'><span class='linenums'>154</span>| [08/07/19 18:31:41] </span><span class='green'>D2BS</span><span class='white'> :: default.dbj running.</span></div>
+<div class='line'><span class='linenums'>155</span>| [08/07/19 18:31:42] </span><span class='yellow'>Map Thread Loaded</span></div>
+<div class='line'><span class='linenums'>156</span>| [08/07/19 18:31:42] </span><span class='green'>Loading MyStuff.js !</span></div>
+<div class='line'><span class='linenums'>157</span>| [08/07/19 18:31:42] </span><span class='green'>ToolsThread loaded!!</span></div>
+<div class='line'><span class='linenums'>158</span>| [08/07/19 18:31:42] </span><span class='blue'>Start ToolsThread script</span></div>
+<div class='line'><span class='linenums'>159</span>| [08/07/19 18:31:49] </span><span class='green'>GoldenDeth-V () entered:  @ 7/8/2019 [18:31:49]</span></div>
+<div class='line'><span class='linenums'>160</span>| [08/07/19 18:32:37] </span><span class='green'>Drinking potion from inventory.</span></div>
+<div class='line'><span class='linenums'>161</span>| [08/07/19 18:33:13] pause mapthread</span></div>
+<div class='line'><span class='linenums'>162</span>| [08/07/19 18:33:13] resume mapthread</span></div>
+<div class='line'><span class='linenums'>163</span>| [08/07/19 18:33:14] pause mapthread</span></div>
+<div class='line'><span class='linenums'>164</span>| [08/07/19 18:33:15] resume mapthread</span></div>
+<div class='line'><span class='linenums'>165</span>| [08/07/19 18:33:15] Script default.dbj ended</span></div>
+<div class='line'><span class='linenums'>166</span>| [08/07/19 18:33:15] Script tools\maphelper.js ended</span></div>
+<div class='line'><span class='linenums'>167</span>| [08/07/19 18:33:15] Script tools\mapthread.js ended</span></div>
+<div class='line'><span class='linenums'>168</span>| [08/07/19 18:33:15] Script tools\toolsthread.js ended</span></div>
+<div class='line'><span class='linenums'>169</span>| [08/07/19 18:33:16] </span><span class='green'>GoldenDeth-V () was 215 hr, 13 min, 22 sec [215:13:22] in </span></div>
+<div class='line'><span class='linenums'>170</span>| [08/07/19 18:33:21] </span><span class='green'>D2BS</span><span class='white'> :: Starting default.dbj</span></div>
+<div class='line'><span class='linenums'>171</span>| [08/07/19 18:33:21] </span><span class='green'>D2BS</span><span class='white'> :: default.dbj running.</span></div>
+<div class='line'><span class='linenums'>172</span>| [08/07/19 18:33:22] </span><span class='yellow'>Map Thread Loaded</span></div>
+<div class='line'><span class='linenums'>173</span>| [08/07/19 18:33:22] </span><span class='green'>Loading MyStuff.js !</span></div>
+<div class='line'><span class='linenums'>174</span>| [08/07/19 18:33:22] </span><span class='green'>ToolsThread loaded!!</span></div>
+<div class='line'><span class='linenums'>175</span>| [08/07/19 18:33:22] </span><span class='blue'>Start ToolsThread script</span></div>
+<div class='line'><span class='linenums'>176</span>| [08/07/19 18:33:29] </span><span class='green'>BlackDeth-II () entered:  @ 7/8/2019 [18:33:29]</span></div>
+<div class='line'><span class='linenums'>177</span>| [08/07/19 18:34:25] Script default.dbj ended</span></div>
+<div class='line'><span class='linenums'>178</span>| [08/07/19 18:34:25] Script tools\maphelper.js ended</span></div>
+<div class='line'><span class='linenums'>179</span>| [08/07/19 18:34:25] Script tools\mapthread.js ended</span></div>
+<div class='line'><span class='linenums'>180</span>| [08/07/19 18:34:25] </span><span class='green'>BlackDeth-II () was 215 hr, 15 min, 3 sec [215:15:03] in </span></div>
+<div class='line'><span class='linenums'>181</span>| [08/07/19 18:34:48] </span><span class='green'>D2BS</span><span class='white'> :: Starting default.dbj</span></div>
+<div class='line'><span class='linenums'>182</span>| [08/07/19 18:34:48] </span><span class='green'>D2BS</span><span class='white'> :: default.dbj running.</span></div>
+<div class='line'><span class='linenums'>183</span>| [08/07/19 18:34:48] </span><span class='yellow'>Map Thread Loaded</span></div>
+<div class='line'><span class='linenums'>184</span>| [08/07/19 18:34:48] </span><span class='green'>Loading MyStuff.js !</span></div>
+<div class='line'><span class='linenums'>185</span>| [08/07/19 18:34:48] </span><span class='green'>ToolsThread loaded!!</span></div>
+<div class='line'><span class='linenums'>186</span>| [08/07/19 18:34:48] </span><span class='blue'>Start ToolsThread script</span></div>
+<div class='line'><span class='linenums'>187</span>| [08/07/19 18:34:55] </span><span class='green'>GoldenDeth-III () entered:  @ 7/8/2019 [18:34:55]</span></div>
+<div class='line'><span class='linenums'>188</span>| [08/07/19 18:36:22] pause mapthread</span></div>
+<div class='line'><span class='linenums'>189</span>| [08/07/19 18:36:23] resume mapthread</span></div>
+<div class='line'><span class='linenums'>190</span>| [08/07/19 18:36:23] Script default.dbj ended</span></div>
+<div class='line'><span class='linenums'>191</span>| [08/07/19 18:36:23] Script tools\maphelper.js ended</span></div>
+<div class='line'><span class='linenums'>192</span>| [08/07/19 18:36:23] Script tools\mapthread.js ended</span></div>
+<div class='line'><span class='linenums'>193</span>| [08/07/19 18:36:23] Script tools\toolsthread.js ended</span></div>
+<div class='line'><span class='linenums'>194</span>| [08/07/19 18:36:23] </span><span class='green'>GoldenDeth-III () was 215 hr, 16 min, 29 sec [215:16:29] in </span></div>
+<div class='line'><span class='linenums'>195</span>| [08/07/19 18:37:37] </span><span class='green'>D2BS</span><span class='white'> :: Started Console Script</span></div>
+<div class='line'><span class='linenums'>196</span>| [08/07/19 18:37:37] D2BS Engine startup complete. 1.5.1880U</span></div>
+<div class='line'><span class='linenums'>197</span>| [08/07/19 18:37:37] </span><span class='green'>D2BS</span><span class='white'> :: Engine startup complete!</span></div>
+<div class='line'><span class='linenums'>198</span>| [08/07/19 18:37:37] </span><span class='green'>D2BS</span><span class='white'> :: Switched to profile Manual-1</span></div>
+<div class='line'><span class='linenums'>199</span>| [08/07/19 18:37:37] </span><span class='green'>D2BS</span><span class='white'> :: Starting D2BotMap.dbj</span></div>
+<div class='line'><span class='linenums'>200</span>| [08/07/19 18:37:37] </span><span class='green'>D2BS</span><span class='white'> :: D2BotMap.dbj running.</span></div>
+<div class='line'><span class='linenums'>201</span>| [08/07/19 18:37:39] mode: 1381968, msg: Handle</span></div>
+<div class='line'><span class='linenums'>202</span>| [08/07/19 18:37:39] Heartbeat loaded</span></div>
+<div class='line'><span class='linenums'>203</span>| [08/07/19 18:40:05] </span><span class='green'>D2BS</span><span class='white'> :: Starting default.dbj</span></div>
+<div class='line'><span class='linenums'>204</span>| [08/07/19 18:40:05] </span><span class='green'>D2BS</span><span class='white'> :: default.dbj running.</span></div>
+<div class='line'><span class='linenums'>205</span>| [08/07/19 18:40:05] </span><span class='yellow'>Map Thread Loaded</span></div>
+<div class='line'><span class='linenums'>206</span>| [08/07/19 18:40:05] </span><span class='green'>Loading MyStuff.js !</span></div>
+<div class='line'><span class='linenums'>207</span>| [08/07/19 18:40:05] </span><span class='green'>ToolsThread loaded!!</span></div>
+<div class='line'><span class='linenums'>208</span>| [08/07/19 18:40:05] </span><span class='blue'>Start ToolsThread script</span></div>
+<div class='line'><span class='linenums'>209</span>| [08/07/19 18:40:12] </span><span class='green'>SilverDeth-VI () entered:  @ 7/8/2019 [18:40:12]</span></div>
+<div class='line'><span class='linenums'>210</span>| [08/07/19 18:44:34] pause mapthread</span></div>
+<div class='line'><span class='linenums'>211</span>| [08/07/19 18:44:35] resume mapthread</span></div>
+<div class='line'><span class='linenums'>212</span>| [08/07/19 18:44:35] Script default.dbj ended</span></div>
+<div class='line'><span class='linenums'>213</span>| [08/07/19 18:44:35] Script tools\maphelper.js ended</span></div>
+<div class='line'><span class='linenums'>214</span>| [08/07/19 18:44:35] Script tools\mapthread.js ended</span></div>
+<div class='line'><span class='linenums'>215</span>| [08/07/19 18:44:35] Script tools\toolsthread.js ended</span></div>
+<div class='line'><span class='linenums'>216</span>| [08/07/19 18:44:35] </span><span class='green'>SilverDeth-VI () was 215 hr, 21 min, 46 sec [215:21:46] in </span></div>
+<div class='line'><span class='linenums'>217</span>| [08/07/19 18:44:39] </span><span class='green'>D2BS</span><span class='white'> :: Starting default.dbj</span></div>
+<div class='line'><span class='linenums'>218</span>| [08/07/19 18:44:39] </span><span class='green'>D2BS</span><span class='white'> :: default.dbj running.</span></div>
+<div class='line'><span class='linenums'>219</span>| [08/07/19 18:44:40] </span><span class='yellow'>Map Thread Loaded</span></div>
+<div class='line'><span class='linenums'>220</span>| [08/07/19 18:44:40] </span><span class='green'>Loading MyStuff.js !</span></div>
+<div class='line'><span class='linenums'>221</span>| [08/07/19 18:44:40] </span><span class='green'>ToolsThread loaded!!</span></div>
+<div class='line'><span class='linenums'>222</span>| [08/07/19 18:44:40] </span><span class='blue'>Start ToolsThread script</span></div>
+<div class='line'><span class='linenums'>223</span>| [08/07/19 18:44:42] D2BS Engine startup complete. 1.5.1880U</span></div>
+<div class='line'><span class='linenums'>224</span>| [08/07/19 18:44:42] </span><span class='green'>D2BS</span><span class='white'> :: Started Console Script</span></div>
+<div class='line'><span class='linenums'>225</span>| [08/07/19 18:44:42] </span><span class='green'>D2BS</span><span class='white'> :: Engine startup complete!</span></div>
+<div class='line'><span class='linenums'>226</span>| [08/07/19 18:44:42] </span><span class='green'>D2BS</span><span class='white'> :: Switched to profile Manual-1</span></div>
+<div class='line'><span class='linenums'>227</span>| [08/07/19 18:44:42] </span><span class='green'>D2BS</span><span class='white'> :: Starting D2BotMap.dbj</span></div>
+<div class='line'><span class='linenums'>228</span>| [08/07/19 18:44:42] </span><span class='green'>D2BS</span><span class='white'> :: D2BotMap.dbj running.</span></div>
+<div class='line'><span class='linenums'>229</span>| [08/07/19 18:44:44] mode: 1381968, msg: Handle</span></div>
+<div class='line'><span class='linenums'>230</span>| [08/07/19 18:44:44] Heartbeat loaded</span></div>
+<div class='line'><span class='linenums'>231</span>| [08/07/19 18:44:46] </span><span class='green'>D2BS</span><span class='white'> :: Starting default.dbj</span></div>
+<div class='line'><span class='linenums'>232</span>| [08/07/19 18:44:46] </span><span class='green'>D2BS</span><span class='white'> :: default.dbj running.</span></div>
+<div class='line'><span class='linenums'>233</span>| [08/07/19 18:44:46] </span><span class='yellow'>Map Thread Loaded</span></div>
+<div class='line'><span class='linenums'>234</span>| [08/07/19 18:44:46] </span><span class='green'>Loading MyStuff.js !</span></div>
+<div class='line'><span class='linenums'>235</span>| [08/07/19 18:44:46] </span><span class='green'>ToolsThread loaded!!</span></div>
+<div class='line'><span class='linenums'>236</span>| [08/07/19 18:44:46] </span><span class='blue'>Start ToolsThread script</span></div>
+<div class='line'><span class='linenums'>237</span>| [08/07/19 18:44:52] </span><span class='green'>pyro-armageden () entered:  @ 7/8/2019 [18:44:52]</span></div>
+<div class='line'><span class='linenums'>238</span>| [08/07/19 18:45:03] </span><span class='gold'>MF: </span><span class='white'>186 </span><span class='gold'>GF: </span><span class='white'>0 </span><span class='red'>FR: </span><span class='white'>124 </span><span class='blue'>CR: </span><span class='white'>124 </span><span class='yellow'>LR: </span><span class='white'>124 </span><span class='green'>PR: </span><span class='white'>215</span></div>
+<div class='line'><span class='linenums'>239</span>| [08/07/19 18:45:03] FCR: 749 IAS: 1070 FBR: 0 FHR: 107 FRW: 107</span></div>
+<div class='line'><span class='linenums'>240</span>| [08/07/19 18:45:03] CB: 3596 DS: 5663 OW: 6714 </span><span class='red'>LL: </span><span class='white'>1397 </span><span class='blue'>ML: </span><span class='white'>1270 DR: 1965% + 378 MDR: 0% + 318</span></div>
+<div class='line'><span class='linenums'>241</span>| [08/07/19 18:45:03] </span><span class='blue'>Cannot be Frozen</span><span class='red'></span></div>
+<div class='line'><span class='linenums'>242</span>| [08/07/19 18:45:03] My coord: 5058, 5258</span></div>
+<div class='line'><span class='linenums'>243</span>| [08/07/19 18:46:42] </span><span class='gold'>MF: </span><span class='white'>186 </span><span class='gold'>GF: </span><span class='white'>0 </span><span class='red'>FR: </span><span class='white'>124 </span><span class='blue'>CR: </span><span class='white'>124 </span><span class='yellow'>LR: </span><span class='white'>124 </span><span class='green'>PR: </span><span class='white'>215</span></div>
+<div class='line'><span class='linenums'>244</span>| [08/07/19 18:46:42] FCR: 749 IAS: 1070 FBR: 0 FHR: 107 FRW: 107</span></div>
+<div class='line'><span class='linenums'>245</span>| [08/07/19 18:46:42] CB: 3596 DS: 5663 OW: 6714 </span><span class='red'>LL: </span><span class='white'>1397 </span><span class='blue'>ML: </span><span class='white'>1270 DR: 1965% + 378 MDR: 0% + 318</span></div>
+<div class='line'><span class='linenums'>246</span>| [08/07/19 18:46:42] </span><span class='blue'>Cannot be Frozen</span><span class='red'></span></div>
+<div class='line'><span class='linenums'>247</span>| [08/07/19 18:46:42] My coord: 4878, 4700</span></div>
+<div class='line'><span class='linenums'>248</span>| [08/07/19 18:47:01] D2BS Engine startup complete. 1.5.1880U</span></div>
+<div class='line'><span class='linenums'>249</span>| [08/07/19 18:47:01] </span><span class='green'>D2BS</span><span class='white'> :: Started Console Script</span></div>
+<div class='line'><span class='linenums'>250</span>| [08/07/19 18:47:01] </span><span class='green'>D2BS</span><span class='white'> :: Engine startup complete!</span></div>
+<div class='line'><span class='linenums'>251</span>| [08/07/19 18:47:01] </span><span class='green'>D2BS</span><span class='white'> :: Switched to profile Manual-1</span></div>
+<div class='line'><span class='linenums'>252</span>| [08/07/19 18:47:01] </span><span class='green'>D2BS</span><span class='white'> :: Starting D2BotMap.dbj</span></div>
+<div class='line'><span class='linenums'>253</span>| [08/07/19 18:47:01] </span><span class='green'>D2BS</span><span class='white'> :: D2BotMap.dbj running.</span></div>
+<div class='line'><span class='linenums'>254</span>| [08/07/19 18:47:02] mode: 1381968, msg: Handle</span></div>
+<div class='line'><span class='linenums'>255</span>| [08/07/19 18:47:03] Heartbeat loaded</span></div>
+<div class='line'><span class='linenums'>256</span>| [08/07/19 18:47:05] D2BS Shutdown complete.</span></div>
+<div class='line'><span class='linenums'>257</span>| [08/07/19 18:47:07] </span><span class='green'>D2BS</span><span class='white'> :: Started Console Script</span></div>
+<div class='line'><span class='linenums'>258</span>| [08/07/19 18:47:07] D2BS Engine startup complete. 1.5.1880U</span></div>
+<div class='line'><span class='linenums'>259</span>| [08/07/19 18:47:07] SP_GoldenDeth</span></div>
+<div class='line'><span class='linenums'>260</span>| [08/07/19 18:47:07] </span><span class='green'>D2BS</span><span class='white'> :: Engine startup complete!</span></div>
+<div class='line'><span class='linenums'>261</span>| [08/07/19 18:47:07] </span><span class='green'>D2BS</span><span class='white'> :: Switched to profile SP_GoldenDeth</span></div>
+<div class='line'><span class='linenums'>262</span>| [08/07/19 18:47:07] </span><span class='green'>D2BS</span><span class='white'> :: Starting D2BotLead.dbj</span></div>
+<div class='line'><span class='linenums'>263</span>| [08/07/19 18:47:07] </span><span class='green'>D2BS</span><span class='white'> :: D2BotLead.dbj running.</span></div>
+<div class='line'><span class='linenums'>264</span>| [08/07/19 18:47:09] Recieved Game Info</span></div>
+<div class='line'><span class='linenums'>265</span>| [08/07/19 18:47:09] Heartbeat loaded</span></div>
+<div class='line'><span class='linenums'>266</span>| [08/07/19 18:47:11] </span><span class='green'>D2BS</span><span class='white'> :: Starting default.dbj</span></div>
+<div class='line'><span class='linenums'>267</span>| [08/07/19 18:47:11] </span><span class='green'>D2BS</span><span class='white'> :: default.dbj running.</span></div>
+<div class='line'><span class='linenums'>268</span>| [08/07/19 18:47:11] </span><span class='green'>Fast pickit active.</span></div>
+<div class='line'><span class='linenums'>269</span>| [08/07/19 18:47:11] </span><span class='yellow'>Map Thread Loaded</span></div>
+<div class='line'><span class='linenums'>270</span>| [08/07/19 18:47:11] </span><span class='green'>Starting script: </span><span class='yellow'>Mausoleum</span></div>
+<div class='line'><span class='linenums'>271</span>| [08/07/19 18:47:11] </span><span class='green'>Party thread loaded. Mode: Accept</span></div>
+<div class='line'><span class='linenums'>272</span>| [08/07/19 18:47:11] 0 entries in shit list.</span></div>
+<div class='line'><span class='linenums'>273</span>| [08/07/19 18:47:11] </span><span class='green'>Loading MyStuff.js !</span></div>
+<div class='line'><span class='linenums'>274</span>| [08/07/19 18:47:11] </span><span class='green'>ToolsThread loaded!!</span></div>
+<div class='line'><span class='linenums'>275</span>| [08/07/19 18:47:11] </span><span class='blue'>Start ToolsThread script</span></div>
+<div class='line'><span class='linenums'>276</span>| [08/07/19 18:47:12] Updating Status</span></div>
+<div class='line'><span class='linenums'>277</span>| [08/07/19 18:47:30] </span><span class='lightgold'>Min/Max/Avg # of Unique Monsters for Crypt: 5/7/6</span></div>
+<div class='line'><span class='linenums'>278</span>| [08/07/19 18:47:30] </span><span class='lightgold'>Min/Max/Avg # of Unique Packs for Crypt: 4/6/5</span></div>
+<div class='line'><span class='linenums'>279</span>| [08/07/19 18:47:30] </span><span class='red'># of Chest Rooms: 2</span></div>
+<div class='line'><span class='linenums'>280</span>| [08/07/19 18:47:30] </span><span class='red'># of Rooms to Skip: 16</span></div>
+<div class='line'><span class='linenums'>281</span>| [08/07/19 18:47:30] </span><span class='green'># of Rooms to Visit: 18</span></div>
+<div class='line'><span class='linenums'>282</span>| [08/07/19 18:47:49] </span><span class='red'>Pausing.</span></div>
+<div class='line'><span class='linenums'>283</span>| [08/07/19 18:47:50] </span><span class='green'>Resuming.</span></div>
+<div class='line'><span class='linenums'>284</span>| [08/07/19 18:47:53] </span><span class='red'>Pausing.</span></div>
+<div class='line'><span class='linenums'>285</span>| [08/07/19 18:53:12] Script default.dbj ended</span></div>
+<div class='line'><span class='linenums'>286</span>| [08/07/19 18:53:12] ========================================</span></div>
+<div class='line'><span class='linenums'>287</span>| [08/07/19 18:53:12] Script tools\maphelper.js ended</span></div>
+<div class='line'><span class='linenums'>288</span>| [08/07/19 18:53:12] Script tools\mapthread.js ended</span></div>
+<div class='line'><span class='linenums'>289</span>| [08/07/19 18:53:12] Script tools\party.js ended</span></div>
+<div class='line'><span class='linenums'>290</span>| [08/07/19 18:53:12] Script tools\toolsthread.js ended</span></div>
+<div class='line'><span class='linenums'>291</span>| [08/07/19 18:53:12] Script tools\townchicken.js ended</span></div>
+<div class='line'><span class='linenums'>292</span>| [08/07/19 18:53:14] </span><span class='green'>D2BS</span><span class='white'> :: Starting default.dbj</span></div>
+<div class='line'><span class='linenums'>293</span>| [08/07/19 18:53:14] </span><span class='green'>D2BS</span><span class='white'> :: default.dbj running.</span></div>
+<div class='line'><span class='linenums'>294</span>| [08/07/19 18:53:14] </span><span class='green'>Fast pickit active.</span></div>
+<div class='line'><span class='linenums'>295</span>| [08/07/19 18:53:14] </span><span class='green'>Starting script: </span><span class='yellow'>Mausoleum</span></div>
+<div class='line'><span class='linenums'>296</span>| [08/07/19 18:53:14] </span><span class='yellow'>Map Thread Loaded</span></div>
+<div class='line'><span class='linenums'>297</span>| [08/07/19 18:53:14] </span><span class='green'>Party thread loaded. Mode: Accept</span></div>
+<div class='line'><span class='linenums'>298</span>| [08/07/19 18:53:14] 0 entries in shit list.</span></div>
+<div class='line'><span class='linenums'>299</span>| [08/07/19 18:53:14] </span><span class='green'>Loading MyStuff.js !</span></div>
+<div class='line'><span class='linenums'>300</span>| [08/07/19 18:53:14] </span><span class='green'>ToolsThread loaded!!</span></div>
+<div class='line'><span class='linenums'>301</span>| [08/07/19 18:53:14] </span><span class='blue'>Start ToolsThread script</span></div>
+<div class='line'><span class='linenums'>302</span>| [08/07/19 18:53:26] </span><span class='lightgold'>Min/Max/Avg # of Unique Monsters for Crypt: 5/7/6</span></div>
+<div class='line'><span class='linenums'>303</span>| [08/07/19 18:53:26] </span><span class='lightgold'>Min/Max/Avg # of Unique Packs for Crypt: 4/6/5</span></div>
+<div class='line'><span class='linenums'>304</span>| [08/07/19 18:53:26] </span><span class='red'># of Chest Rooms: 2</span></div>
+<div class='line'><span class='linenums'>305</span>| [08/07/19 18:53:26] </span><span class='red'># of Rooms to Skip: 16</span></div>
+<div class='line'><span class='linenums'>306</span>| [08/07/19 18:53:26] </span><span class='green'># of Rooms to Visit: 18</span></div>
+<div class='line'><span class='linenums'>307</span>| [08/07/19 18:59:14] Script default.dbj ended</span></div>
+<div class='line'><span class='linenums'>308</span>| [08/07/19 18:59:14] ========================================</span></div>
+<div class='line'><span class='linenums'>309</span>| [08/07/19 18:59:14] Script tools\maphelper.js ended</span></div>
+<div class='line'><span class='linenums'>310</span>| [08/07/19 18:59:14] Script tools\mapthread.js ended</span></div>
+<div class='line'><span class='linenums'>311</span>| [08/07/19 18:59:14] Script tools\party.js ended</span></div>
+<div class='line'><span class='linenums'>312</span>| [08/07/19 18:59:14] Script tools\toolsthread.js ended</span></div>
+<div class='line'><span class='linenums'>313</span>| [08/07/19 18:59:14] Script tools\townchicken.js ended</span></div>
+<div class='line'><span class='linenums'>314</span>| [08/07/19 18:59:17] </span><span class='green'>D2BS</span><span class='white'> :: Starting default.dbj</span></div>
+<div class='line'><span class='linenums'>315</span>| [08/07/19 18:59:17] </span><span class='green'>D2BS</span><span class='white'> :: default.dbj running.</span></div>
+<div class='line'><span class='linenums'>316</span>| [08/07/19 18:59:17] </span><span class='green'>Fast pickit active.</span></div>
+<div class='line'><span class='linenums'>317</span>| [08/07/19 18:59:17] </span><span class='green'>Starting script: </span><span class='yellow'>Mausoleum</span></div>
+<div class='line'><span class='linenums'>318</span>| [08/07/19 18:59:17] </span><span class='yellow'>Map Thread Loaded</span></div>
+<div class='line'><span class='linenums'>319</span>| [08/07/19 18:59:17] </span><span class='green'>Party thread loaded. Mode: Accept</span></div>
+<div class='line'><span class='linenums'>320</span>| [08/07/19 18:59:17] 0 entries in shit list.</span></div>
+<div class='line'><span class='linenums'>321</span>| [08/07/19 18:59:17] </span><span class='green'>Loading MyStuff.js !</span></div>
+<div class='line'><span class='linenums'>322</span>| [08/07/19 18:59:17] </span><span class='green'>ToolsThread loaded!!</span></div>
+<div class='line'><span class='linenums'>323</span>| [08/07/19 18:59:17] </span><span class='blue'>Start ToolsThread script</span></div>
+<div class='line'><span class='linenums'>324</span>| [08/07/19 18:59:31] </span><span class='lightgold'>Min/Max/Avg # of Unique Monsters for Crypt: 5/7/6</span></div>
+<div class='line'><span class='linenums'>325</span>| [08/07/19 18:59:31] </span><span class='lightgold'>Min/Max/Avg # of Unique Packs for Crypt: 4/6/5</span></div>
+<div class='line'><span class='linenums'>326</span>| [08/07/19 18:59:31] </span><span class='red'># of Chest Rooms: 2</span></div>
+<div class='line'><span class='linenums'>327</span>| [08/07/19 18:59:31] </span><span class='red'># of Rooms to Skip: 16</span></div>
+<div class='line'><span class='linenums'>328</span>| [08/07/19 18:59:31] </span><span class='green'># of Rooms to Visit: 18</span></div>
+<div class='line'><span class='linenums'>329</span>| [08/07/19 19:05:17] Script default.dbj ended</span></div>
+<div class='line'><span class='linenums'>330</span>| [08/07/19 19:05:17] ========================================</span></div>
+<div class='line'><span class='linenums'>331</span>| [08/07/19 19:05:17] Script tools\maphelper.js ended</span></div>
+<div class='line'><span class='linenums'>332</span>| [08/07/19 19:05:17] Script tools\mapthread.js ended</span></div>
+<div class='line'><span class='linenums'>333</span>| [08/07/19 19:05:17] Script tools\party.js ended</span></div>
+<div class='line'><span class='linenums'>334</span>| [08/07/19 19:05:17] Script tools\toolsthread.js ended</span></div>
+<div class='line'><span class='linenums'>335</span>| [08/07/19 19:05:17] Script tools\townchicken.js ended</span></div>
+<div class='line'><span class='linenums'>336</span>| [08/07/19 19:05:20] </span><span class='green'>D2BS</span><span class='white'> :: Starting default.dbj</span></div>
+<div class='line'><span class='linenums'>337</span>| [08/07/19 19:05:20] </span><span class='green'>D2BS</span><span class='white'> :: default.dbj running.</span></div>
+<div class='line'><span class='linenums'>338</span>| [08/07/19 19:05:20] </span><span class='green'>Fast pickit active.</span></div>
+<div class='line'><span class='linenums'>339</span>| [08/07/19 19:05:20] </span><span class='green'>Starting script: </span><span class='yellow'>Mausoleum</span></div>
+<div class='line'><span class='linenums'>340</span>| [08/07/19 19:05:20] </span><span class='yellow'>Map Thread Loaded</span></div>
+<div class='line'><span class='linenums'>341</span>| [08/07/19 19:05:20] </span><span class='green'>Party thread loaded. Mode: Accept</span></div>
+<div class='line'><span class='linenums'>342</span>| [08/07/19 19:05:20] 0 entries in shit list.</span></div>
+<div class='line'><span class='linenums'>343</span>| [08/07/19 19:05:20] </span><span class='green'>Loading MyStuff.js !</span></div>
+<div class='line'><span class='linenums'>344</span>| [08/07/19 19:05:20] </span><span class='green'>ToolsThread loaded!!</span></div>
+<div class='line'><span class='linenums'>345</span>| [08/07/19 19:05:20] </span><span class='blue'>Start ToolsThread script</span></div>
+<div class='line'><span class='linenums'>346</span>| [08/07/19 19:05:22] </span><span class='red'>Pausing.</span></div>
+<div class='line'><span class='linenums'>347</span>| [08/07/19 19:05:53] </span><span class='gold'>MF: </span><span class='white'>208 </span><span class='gold'>GF: </span><span class='white'>160 </span><span class='red'>FR: </span><span class='white'>175 </span><span class='blue'>CR: </span><span class='white'>210 </span><span class='yellow'>LR: </span><span class='white'>243 </span><span class='green'>PR: </span><span class='white'>240</span></div>
+<div class='line'><span class='linenums'>348</span>| [08/07/19 19:05:53] FCR: 105 IAS: 0 FBR: 0 FHR: 115 FRW: 35</span></div>
+<div class='line'><span class='linenums'>349</span>| [08/07/19 19:05:53] CB: 0 DS: 0 OW: 0 </span><span class='red'>LL: </span><span class='white'>10 </span><span class='blue'>ML: </span><span class='white'>10 DR: 0% + 0 MDR: 0% + 15</span></div>
+<div class='line'><span class='linenums'>350</span>| [08/07/19 19:05:53] My coord: 5815, 4717</span></div>
+<div class='line'><span class='linenums'>351</span>| [08/07/19 19:05:55] </span><span class='green'>D2BS</span><span class='white'> :: Stopping all scripts</span></div>
+<div class='line'><span class='linenums'>352</span>| [08/07/19 19:05:55] Script d2botlead.dbj ended</span></div>
+<div class='line'><span class='linenums'>353</span>| [08/07/19 19:05:55] Script default.dbj ended</span></div>
+<div class='line'><span class='linenums'>354</span>| [08/07/19 19:05:55] Script tools\heartbeat.js ended</span></div>
+<div class='line'><span class='linenums'>355</span>| [08/07/19 19:05:55] Script tools\maphelper.js ended</span></div>
+<div class='line'><span class='linenums'>356</span>| [08/07/19 19:05:55] Script tools\mapthread.js ended</span></div>
+<div class='line'><span class='linenums'>357</span>| [08/07/19 19:05:55] Script tools\party.js ended</span></div>
+<div class='line'><span class='linenums'>358</span>| [08/07/19 19:05:55] Script tools\toolsthread.js ended</span></div>
+<div class='line'><span class='linenums'>359</span>| [08/07/19 19:05:55] Script tools\townchicken.js ended</span></div>
+<div class='line'><span class='linenums'>360</span>| [08/07/19 19:05:55] </span><span class='green'>D2BS</span><span class='white'> :: Started default.dbj</span></div>
+<div class='line'><span class='linenums'>361</span>| [08/07/19 19:05:55] </span><span class='green'>Fast pickit active.</span></div>
+<div class='line'><span class='linenums'>362</span>| [08/07/19 19:05:55] </span><span class='green'>Starting script: </span><span class='yellow'>Mausoleum</span></div>
+<div class='line'><span class='linenums'>363</span>| [08/07/19 19:05:55] </span><span class='yellow'>Map Thread Loaded</span></div>
+<div class='line'><span class='linenums'>364</span>| [08/07/19 19:05:55] Heartbeat loaded</span></div>
+<div class='line'><span class='linenums'>365</span>| [08/07/19 19:05:55] </span><span class='green'>Party thread loaded. Mode: Accept</span></div>
+<div class='line'><span class='linenums'>366</span>| [08/07/19 19:05:55] 0 entries in shit list.</span></div>
+<div class='line'><span class='linenums'>367</span>| [08/07/19 19:05:55] </span><span class='green'>Loading MyStuff.js !</span></div>
+<div class='line'><span class='linenums'>368</span>| [08/07/19 19:05:55] </span><span class='green'>ToolsThread loaded!!</span></div>
+<div class='line'><span class='linenums'>369</span>| [08/07/19 19:05:55] </span><span class='blue'>Start ToolsThread script</span></div>
+<div class='line'><span class='linenums'>370</span>| [08/07/19 19:05:56] </span><span class='red'>Pausing.</span></div>
+<div class='line'><span class='linenums'>371</span>| [08/07/19 19:31:10] </span><span class='green'>Resuming.</span></div>
+<div class='line'><span class='linenums'>372</span>| [08/07/19 19:31:21] </span><span class='red'>Pausing.</span></div>
+<div class='line'><span class='linenums'>373</span>| [08/07/19 19:31:48] </span><span class='gold'>MF: </span><span class='white'>208 </span><span class='gold'>GF: </span><span class='white'>160 </span><span class='red'>FR: </span><span class='white'>175 </span><span class='blue'>CR: </span><span class='white'>210 </span><span class='yellow'>LR: </span><span class='white'>243 </span><span class='green'>PR: </span><span class='white'>240</span></div>
+<div class='line'><span class='linenums'>374</span>| [08/07/19 19:31:48] FCR: 105 IAS: 0 FBR: 0 FHR: 115 FRW: 35</span></div>
+<div class='line'><span class='linenums'>375</span>| [08/07/19 19:31:48] CB: 0 DS: 0 OW: 0 </span><span class='red'>LL: </span><span class='white'>10 </span><span class='blue'>ML: </span><span class='white'>10 DR: 0% + 0 MDR: 0% + 15</span></div>
+<div class='line'><span class='linenums'>376</span>| [08/07/19 19:31:48] My coord: 10260, 5345</span></div>
+<div class='line'><span class='linenums'>377</span>| [08/07/19 19:31:56] </span><span class='gold'>MF: </span><span class='white'>208 </span><span class='gold'>GF: </span><span class='white'>160 </span><span class='red'>FR: </span><span class='white'>175 </span><span class='blue'>CR: </span><span class='white'>210 </span><span class='yellow'>LR: </span><span class='white'>243 </span><span class='green'>PR: </span><span class='white'>240</span></div>
+<div class='line'><span class='linenums'>378</span>| [08/07/19 19:31:56] FCR: 105 IAS: 0 FBR: 0 FHR: 115 FRW: 35</span></div>
+<div class='line'><span class='linenums'>379</span>| [08/07/19 19:31:56] CB: 0 DS: 0 OW: 0 </span><span class='red'>LL: </span><span class='white'>10 </span><span class='blue'>ML: </span><span class='white'>10 DR: 0% + 0 MDR: 0% + 15</span></div>
+<div class='line'><span class='linenums'>380</span>| [08/07/19 19:31:56] My coord: 10260, 5333</span></div>
+<div class='line'><span class='linenums'>381</span>| [08/07/19 20:03:37] </span><span class='gold'>MF: </span><span class='white'>208 </span><span class='gold'>GF: </span><span class='white'>160 </span><span class='red'>FR: </span><span class='white'>175 </span><span class='blue'>CR: </span><span class='white'>210 </span><span class='yellow'>LR: </span><span class='white'>243 </span><span class='green'>PR: </span><span class='white'>240</span></div>
+<div class='line'><span class='linenums'>382</span>| [08/07/19 20:03:37] FCR: 105 IAS: 0 FBR: 0 FHR: 115 FRW: 35</span></div>
+<div class='line'><span class='linenums'>383</span>| [08/07/19 20:03:37] CB: 0 DS: 0 OW: 0 </span><span class='red'>LL: </span><span class='white'>10 </span><span class='blue'>ML: </span><span class='white'>10 DR: 0% + 0 MDR: 0% + 15</span></div>
+<div class='line'><span class='linenums'>384</span>| [08/07/19 20:03:37] My coord: 5826, 4741</span></div>
+<div class='line'><span class='linenums'>385</span>| [08/07/19 20:03:39] </span><span class='green'>D2BS</span><span class='white'> :: Stopping all scripts</span></div>
+<div class='line'><span class='linenums'>386</span>| [08/07/19 20:03:39] Script default.dbj ended</span></div>
+<div class='line'><span class='linenums'>387</span>| [08/07/19 20:03:39] Script tools\heartbeat.js ended</span></div>
+<div class='line'><span class='linenums'>388</span>| [08/07/19 20:03:39] Script tools\maphelper.js ended</span></div>
+<div class='line'><span class='linenums'>389</span>| [08/07/19 20:03:39] Script tools\mapthread.js ended</span></div>
+<div class='line'><span class='linenums'>390</span>| [08/07/19 20:03:39] Script tools\party.js ended</span></div>
+<div class='line'><span class='linenums'>391</span>| [08/07/19 20:03:39] Script tools\toolsthread.js ended</span></div>
+<div class='line'><span class='linenums'>392</span>| [08/07/19 20:03:39] Script tools\townchicken.js ended</span></div>
+<div class='line'><span class='linenums'>393</span>| [08/07/19 20:03:39] </span><span class='green'>D2BS</span><span class='white'> :: Started default.dbj</span></div>
+<div class='line'><span class='linenums'>394</span>| [08/07/19 20:03:39] </span><span class='green'>Fast pickit active.</span></div>
+<div class='line'><span class='linenums'>395</span>| [08/07/19 20:03:39] </span><span class='green'>Starting script: </span><span class='yellow'>Mausoleum</span></div>
+<div class='line'><span class='linenums'>396</span>| [08/07/19 20:03:39] </span><span class='yellow'>Map Thread Loaded</span></div>
+<div class='line'><span class='linenums'>397</span>| [08/07/19 20:03:39] Heartbeat loaded</span></div>
+<div class='line'><span class='linenums'>398</span>| [08/07/19 20:03:39] </span><span class='green'>Party thread loaded. Mode: Accept</span></div>
+<div class='line'><span class='linenums'>399</span>| [08/07/19 20:03:39] 0 entries in shit list.</span></div>
+<div class='line'><span class='linenums'>400</span>| [08/07/19 20:03:39] </span><span class='green'>Loading MyStuff.js !</span></div>
+<div class='line'><span class='linenums'>401</span>| [08/07/19 20:03:39] </span><span class='green'>ToolsThread loaded!!</span></div>
+<div class='line'><span class='linenums'>402</span>| [08/07/19 20:03:39] </span><span class='blue'>Start ToolsThread script</span></div>
+<div class='line'><span class='linenums'>403</span>| [08/07/19 20:03:40] </span><span class='red'>Pausing.</span></div>
+<div class='line'><span class='linenums'>404</span>| [08/07/19 20:04:22] </span><span class='gold'>MF: </span><span class='white'>208 </span><span class='gold'>GF: </span><span class='white'>160 </span><span class='red'>FR: </span><span class='white'>175 </span><span class='blue'>CR: </span><span class='white'>210 </span><span class='yellow'>LR: </span><span class='white'>243 </span><span class='green'>PR: </span><span class='white'>240</span></div>
+<div class='line'><span class='linenums'>405</span>| [08/07/19 20:04:22] FCR: 105 IAS: 0 FBR: 0 FHR: 115 FRW: 35</span></div>
+<div class='line'><span class='linenums'>406</span>| [08/07/19 20:04:22] CB: 0 DS: 0 OW: 0 </span><span class='red'>LL: </span><span class='white'>10 </span><span class='blue'>ML: </span><span class='white'>10 DR: 0% + 0 MDR: 0% + 15</span></div>
+<div class='line'><span class='linenums'>407</span>| [08/07/19 20:04:22] My coord: 5823, 4729</span></div>
+<div class='line'><span class='linenums'>408</span>| [08/07/19 20:04:23] </span><span class='green'>D2BS</span><span class='white'> :: Stopping all scripts</span></div>
+<div class='line'><span class='linenums'>409</span>| [08/07/19 20:04:23] Script default.dbj ended</span></div>
+<div class='line'><span class='linenums'>410</span>| [08/07/19 20:04:23] Script tools\heartbeat.js ended</span></div>
+<div class='line'><span class='linenums'>411</span>| [08/07/19 20:04:23] Script tools\maphelper.js ended</span></div>
+<div class='line'><span class='linenums'>412</span>| [08/07/19 20:04:23] Script tools\mapthread.js ended</span></div>
+<div class='line'><span class='linenums'>413</span>| [08/07/19 20:04:23] Script tools\party.js ended</span></div>
+<div class='line'><span class='linenums'>414</span>| [08/07/19 20:04:23] Script tools\toolsthread.js ended</span></div>
+<div class='line'><span class='linenums'>415</span>| [08/07/19 20:04:23] Script tools\townchicken.js ended</span></div>
+<div class='line'><span class='linenums'>416</span>| [08/07/19 20:04:23] </span><span class='green'>D2BS</span><span class='white'> :: Started default.dbj</span></div>
+<div class='line'><span class='linenums'>417</span>| [08/07/19 20:04:23] </span><span class='green'>Fast pickit active.</span></div>
+<div class='line'><span class='linenums'>418</span>| [08/07/19 20:04:23] </span><span class='green'>Starting script: </span><span class='yellow'>Mausoleum</span></div>
+<div class='line'><span class='linenums'>419</span>| [08/07/19 20:04:23] Heartbeat loaded</span></div>
+<div class='line'><span class='linenums'>420</span>| [08/07/19 20:04:23] </span><span class='yellow'>Map Thread Loaded</span></div>
+<div class='line'><span class='linenums'>421</span>| [08/07/19 20:04:23] </span><span class='green'>Party thread loaded. Mode: Accept</span></div>
+<div class='line'><span class='linenums'>422</span>| [08/07/19 20:04:23] 0 entries in shit list.</span></div>
+<div class='line'><span class='linenums'>423</span>| [08/07/19 20:04:23] </span><span class='green'>Loading MyStuff.js !</span></div>
+<div class='line'><span class='linenums'>424</span>| [08/07/19 20:04:23] </span><span class='green'>ToolsThread loaded!!</span></div>
+<div class='line'><span class='linenums'>425</span>| [08/07/19 20:04:23] </span><span class='blue'>Start ToolsThread script</span></div>
+<div class='line'><span class='linenums'>426</span>| [08/07/19 20:04:35] [Strict Warning] Code(162) File(i:\games\d2kolbot3\trunk\d2bs\kolbot\libs\common\attack.js:1170) reference to undefined property this.RoomsDataPerArea</span></div>
+<div class='line'><span class='linenums'>427| Line: (null)</span></div>
+<div class='line'><span class='linenums'>428</span>| [08/07/19 20:04:35] </span><span class='lightgold'>Min/Max/Avg # of Unique Monsters for Crypt: 5/7/6</span></div>
+<div class='line'><span class='linenums'>429</span>| [08/07/19 20:04:35] </span><span class='lightgold'>Min/Max/Avg # of Unique Packs for Crypt: 4/6/5</span></div>
+<div class='line'><span class='linenums'>430</span>| [08/07/19 20:04:35] [</span><span class='yellow'>Strict Warning</span><span class='white'> (162)] File(kolbot\libs\common\attack.js:1170) reference to undefined property this.RoomsDataPerArea</span></div>
+<div class='line'><span class='linenums'>431</span>| [08/07/19 20:04:35] </span><span class='red'>Error in </span><span class='white'>Mausoleum </span><span class='red'>(myfunctions.js line </span><span class='red'>99): </span><span class='red'>base is undefined</span></div>
+<div class='line'><span class='linenums'>432</span>| [08/07/19 20:04:36] </span><span class='green'>Starting script: </span><span class='yellow'>AncientTunnels</span></div>
+<div class='line'><span class='linenums'>433</span>| [08/07/19 20:04:37] </span><span class='red'>Pausing.</span></div>
+<div class='line'><span class='linenums'>434</span>| [08/07/19 20:05:27] </span><span class='gold'>MF: </span><span class='white'>208 </span><span class='gold'>GF: </span><span class='white'>160 </span><span class='red'>FR: </span><span class='white'>175 </span><span class='blue'>CR: </span><span class='white'>210 </span><span class='yellow'>LR: </span><span class='white'>243 </span><span class='green'>PR: </span><span class='white'>240</span></div>
+<div class='line'><span class='linenums'>435</span>| [08/07/19 20:05:27] FCR: 105 IAS: 0 FBR: 0 FHR: 115 FRW: 35</span></div>
+<div class='line'><span class='linenums'>436</span>| [08/07/19 20:05:27] CB: 0 DS: 0 OW: 0 </span><span class='red'>LL: </span><span class='white'>10 </span><span class='blue'>ML: </span><span class='white'>10 DR: 0% + 0 MDR: 0% + 15</span></div>
+<div class='line'><span class='linenums'>437</span>| [08/07/19 20:05:27] My coord: 5821, 4725</span></div>
+<div class='line'><span class='linenums'>438</span>| [08/07/19 20:05:52] </span><span class='green'>D2BS</span><span class='white'> :: Stopping all scripts</span></div>
+<div class='line'><span class='linenums'>439</span>| [08/07/19 20:05:52] Script default.dbj ended</span></div>
+<div class='line'><span class='linenums'>440</span>| [08/07/19 20:05:52] Script tools\heartbeat.js ended</span></div>
+<div class='line'><span class='linenums'>441</span>| [08/07/19 20:05:52] Script tools\maphelper.js ended</span></div>
+<div class='line'><span class='linenums'>442</span>| [08/07/19 20:05:52] Script tools\mapthread.js ended</span></div>
+<div class='line'><span class='linenums'>443</span>| [08/07/19 20:05:52] Script tools\party.js ended</span></div>
+<div class='line'><span class='linenums'>444</span>| [08/07/19 20:05:52] Script tools\toolsthread.js ended</span></div>
+<div class='line'><span class='linenums'>445</span>| [08/07/19 20:05:52] Script tools\townchicken.js ended</span></div>
+<div class='line'><span class='linenums'>446</span>| [08/07/19 20:05:52] </span><span class='green'>D2BS</span><span class='white'> :: Started default.dbj</span></div>
+<div class='line'><span class='linenums'>447</span>| [08/07/19 20:05:52] </span><span class='green'>Fast pickit active.</span></div>
+<div class='line'><span class='linenums'>448</span>| [08/07/19 20:05:53] </span><span class='green'>Starting script: </span><span class='yellow'>Mausoleum</span></div>
+<div class='line'><span class='linenums'>449</span>| [08/07/19 20:05:53] </span><span class='yellow'>Map Thread Loaded</span></div>
+<div class='line'><span class='linenums'>450</span>| [08/07/19 20:05:53] Heartbeat loaded</span></div>
+<div class='line'><span class='linenums'>451</span>| [08/07/19 20:05:53] </span><span class='green'>Party thread loaded. Mode: Accept</span></div>
+<div class='line'><span class='linenums'>452</span>| [08/07/19 20:05:53] 0 entries in shit list.</span></div>
+<div class='line'><span class='linenums'>453</span>| [08/07/19 20:05:53] </span><span class='green'>Loading MyStuff.js !</span></div>
+<div class='line'><span class='linenums'>454</span>| [08/07/19 20:05:53] </span><span class='green'>ToolsThread loaded!!</span></div>
+<div class='line'><span class='linenums'>455</span>| [08/07/19 20:05:53] </span><span class='blue'>Start ToolsThread script</span></div>
+<div class='line'><span class='linenums'>456</span>| [08/07/19 20:06:05] </span><span class='lightgold'>Min/Max/Avg # of Unique Monsters for Crypt: 5/7/6</span></div>
+<div class='line'><span class='linenums'>457</span>| [08/07/19 20:06:05] </span><span class='lightgold'>Min/Max/Avg # of Unique Packs for Crypt: 4/6/5</span></div>
+<div class='line'><span class='linenums'>458</span>| [08/07/19 20:06:05] </span><span class='red'>Error in </span><span class='white'>Mausoleum </span><span class='red'>(attack.js line </span><span class='red'>1024): </span><span class='red'>color is not defined</span></div>
+<div class='line'><span class='linenums'>459</span>| [08/07/19 20:06:05] </span><span class='green'>Starting script: </span><span class='yellow'>AncientTunnels</span></div>
+<div class='line'><span class='linenums'>460</span>| [08/07/19 20:06:05] initNPC: fillTome</span></div>
+<div class='line'><span class='linenums'>461</span>| [08/07/19 20:06:07] </span><span class='red'>Pausing.</span></div>
+<div class='line'><span class='linenums'>462</span>| [08/07/19 20:06:26] </span><span class='gold'>MF: </span><span class='white'>208 </span><span class='gold'>GF: </span><span class='white'>160 </span><span class='red'>FR: </span><span class='white'>175 </span><span class='blue'>CR: </span><span class='white'>210 </span><span class='yellow'>LR: </span><span class='white'>243 </span><span class='green'>PR: </span><span class='white'>240</span></div>
+<div class='line'><span class='linenums'>463</span>| [08/07/19 20:06:26] FCR: 105 IAS: 0 FBR: 0 FHR: 115 FRW: 35</span></div>
+<div class='line'><span class='linenums'>464</span>| [08/07/19 20:06:26] CB: 0 DS: 0 OW: 0 </span><span class='red'>LL: </span><span class='white'>10 </span><span class='blue'>ML: </span><span class='white'>10 DR: 0% + 0 MDR: 0% + 15</span></div>
+<div class='line'><span class='linenums'>465</span>| [08/07/19 20:06:26] My coord: 5846, 4727</span></div>
+<div class='line'><span class='linenums'>466</span>| [08/07/19 20:06:27] </span><span class='green'>D2BS</span><span class='white'> :: Stopping all scripts</span></div>
+<div class='line'><span class='linenums'>467</span>| [08/07/19 20:06:27] Script default.dbj ended</span></div>
+<div class='line'><span class='linenums'>468</span>| [08/07/19 20:06:27] Script tools\heartbeat.js ended</span></div>
+<div class='line'><span class='linenums'>469</span>| [08/07/19 20:06:27] Script tools\maphelper.js ended</span></div>
+<div class='line'><span class='linenums'>470</span>| [08/07/19 20:06:27] Script tools\mapthread.js ended</span></div>
+<div class='line'><span class='linenums'>471</span>| [08/07/19 20:06:27] Script tools\party.js ended</span></div>
+<div class='line'><span class='linenums'>472</span>| [08/07/19 20:06:27] Script tools\toolsthread.js ended</span></div>
+<div class='line'><span class='linenums'>473</span>| [08/07/19 20:06:27] Script tools\townchicken.js ended</span></div>
+<div class='line'><span class='linenums'>474</span>| [08/07/19 20:06:27] </span><span class='green'>D2BS</span><span class='white'> :: Started default.dbj</span></div>
+<div class='line'><span class='linenums'>475</span>| [08/07/19 20:06:27] </span><span class='green'>Fast pickit active.</span></div>
+<div class='line'><span class='linenums'>476</span>| [08/07/19 20:06:27] </span><span class='green'>Starting script: </span><span class='yellow'>Mausoleum</span></div>
+<div class='line'><span class='linenums'>477</span>| [08/07/19 20:06:27] initNPC: fillTome</span></div>
+<div class='line'><span class='linenums'>478</span>| [08/07/19 20:06:27] </span><span class='yellow'>Map Thread Loaded</span></div>
+<div class='line'><span class='linenums'>479</span>| [08/07/19 20:06:27] Heartbeat loaded</span></div>
+<div class='line'><span class='linenums'>480</span>| [08/07/19 20:06:27] </span><span class='green'>Party thread loaded. Mode: Accept</span></div>
+<div class='line'><span class='linenums'>481</span>| [08/07/19 20:06:27] 0 entries in shit list.</span></div>
+<div class='line'><span class='linenums'>482</span>| [08/07/19 20:06:27] </span><span class='green'>Loading MyStuff.js !</span></div>
+<div class='line'><span class='linenums'>483</span>| [08/07/19 20:06:27] </span><span class='green'>ToolsThread loaded!!</span></div>
+<div class='line'><span class='linenums'>484</span>| [08/07/19 20:06:27] </span><span class='blue'>Start ToolsThread script</span></div>
+<div class='line'><span class='linenums'>485</span>| [08/07/19 20:06:34] </span><span class='red'>Pausing.</span></div>
+<div class='line'><span class='linenums'>486</span>| [08/07/19 20:06:45] </span><span class='gold'>MF: </span><span class='white'>208 </span><span class='gold'>GF: </span><span class='white'>160 </span><span class='red'>FR: </span><span class='white'>175 </span><span class='blue'>CR: </span><span class='white'>210 </span><span class='yellow'>LR: </span><span class='white'>243 </span><span class='green'>PR: </span><span class='white'>240</span></div>
+<div class='line'><span class='linenums'>487</span>| [08/07/19 20:06:45] FCR: 105 IAS: 0 FBR: 0 FHR: 115 FRW: 35</span></div>
+<div class='line'><span class='linenums'>488</span>| [08/07/19 20:06:45] CB: 0 DS: 0 OW: 0 </span><span class='red'>LL: </span><span class='white'>10 </span><span class='blue'>ML: </span><span class='white'>10 DR: 0% + 0 MDR: 0% + 15</span></div>
+<div class='line'><span class='linenums'>489</span>| [08/07/19 20:06:45] My coord: 5828, 4712</span></div>
+<div class='line'><span class='linenums'>490</span>| [08/07/19 20:06:46] </span><span class='green'>D2BS</span><span class='white'> :: Stopping all scripts</span></div>
+<div class='line'><span class='linenums'>491</span>| [08/07/19 20:06:46] Script default.dbj ended</span></div>
+<div class='line'><span class='linenums'>492</span>| [08/07/19 20:06:46] Script tools\heartbeat.js ended</span></div>
+<div class='line'><span class='linenums'>493</span>| [08/07/19 20:06:46] Script tools\maphelper.js ended</span></div>
+<div class='line'><span class='linenums'>494</span>| [08/07/19 20:06:46] Script tools\mapthread.js ended</span></div>
+<div class='line'><span class='linenums'>495</span>| [08/07/19 20:06:46] Script tools\party.js ended</span></div>
+<div class='line'><span class='linenums'>496</span>| [08/07/19 20:06:46] Script tools\toolsthread.js ended</span></div>
+<div class='line'><span class='linenums'>497</span>| [08/07/19 20:06:46] Script tools\townchicken.js ended</span></div>
+<div class='line'><span class='linenums'>498</span>| [08/07/19 20:06:46] </span><span class='green'>D2BS</span><span class='white'> :: Started default.dbj</span></div>
+<div class='line'><span class='linenums'>499</span>| [08/07/19 20:06:46] </span><span class='green'>Fast pickit active.</span></div>
+<div class='line'><span class='linenums'>500</span>| [08/07/19 20:06:46] </span><span class='green'>Starting script: </span><span class='yellow'>Mausoleum</span></div>
+<div class='line'><span class='linenums'>501</span>| [08/07/19 20:06:46] </span><span class='yellow'>Map Thread Loaded</span></div>
+<div class='line'><span class='linenums'>502</span>| [08/07/19 20:06:46] Heartbeat loaded</span></div>
+<div class='line'><span class='linenums'>503</span>| [08/07/19 20:06:46] </span><span class='green'>Party thread loaded. Mode: Accept</span></div>
+<div class='line'><span class='linenums'>504</span>| [08/07/19 20:06:46] 0 entries in shit list.</span></div>
+<div class='line'><span class='linenums'>505</span>| [08/07/19 20:06:46] </span><span class='green'>Loading MyStuff.js !</span></div>
+<div class='line'><span class='linenums'>506</span>| [08/07/19 20:06:46] </span><span class='green'>ToolsThread loaded!!</span></div>
+<div class='line'><span class='linenums'>507</span>| [08/07/19 20:06:46] </span><span class='blue'>Start ToolsThread script</span></div>
+<div class='line'><span class='linenums'>508</span>| [08/07/19 20:06:57] </span><span class='lightgold'>Min/Max/Avg # of Unique Monsters for Mausoleum: 4/6/5</span></div>
+<div class='line'><span class='linenums'>509</span>| [08/07/19 20:06:57] </span><span class='lightgold'>Min/Max/Avg # of Unique Packs for Mausoleum: 3/5/4</span></div>
+<div class='line'><span class='linenums'>510</span>| [08/07/19 20:09:32] </span><span class='gold'>MF: </span><span class='white'>208 </span><span class='gold'>GF: </span><span class='white'>160 </span><span class='red'>FR: </span><span class='white'>175 </span><span class='blue'>CR: </span><span class='white'>210 </span><span class='yellow'>LR: </span><span class='white'>243 </span><span class='green'>PR: </span><span class='white'>240</span></div>
+<div class='line'><span class='linenums'>511</span>| [08/07/19 20:09:32] FCR: 105 IAS: 0 FBR: 0 FHR: 115 FRW: 35</span></div>
+<div class='line'><span class='linenums'>512</span>| [08/07/19 20:09:32] CB: 0 DS: 0 OW: 0 </span><span class='red'>LL: </span><span class='white'>10 </span><span class='blue'>ML: </span><span class='white'>10 DR: 0% + 0 MDR: 0% + 15</span></div>
+<div class='line'><span class='linenums'>513</span>| [08/07/19 20:09:32] My coord: 10010, 6637</span></div>
+<div class='line'><span class='linenums'>514</span>| [08/07/19 20:09:46] </span><span class='green'>D2BS</span><span class='white'> :: Stopping all scripts</span></div>
+<div class='line'><span class='linenums'>515</span>| [08/07/19 20:09:46] Script default.dbj ended</span></div>
+<div class='line'><span class='linenums'>516</span>| [08/07/19 20:09:46] Script tools\heartbeat.js ended</span></div>
+<div class='line'><span class='linenums'>517</span>| [08/07/19 20:09:46] Script tools\maphelper.js ended</span></div>
+<div class='line'><span class='linenums'>518</span>| [08/07/19 20:09:46] Script tools\mapthread.js ended</span></div>
+<div class='line'><span class='linenums'>519</span>| [08/07/19 20:09:46] Script tools\party.js ended</span></div>
+<div class='line'><span class='linenums'>520</span>| [08/07/19 20:09:46] Script tools\toolsthread.js ended</span></div>
+<div class='line'><span class='linenums'>521</span>| [08/07/19 20:09:46] Script tools\townchicken.js ended</span></div>
+<div class='line'><span class='linenums'>522</span>| [08/07/19 20:09:46] </span><span class='green'>D2BS</span><span class='white'> :: Started default.dbj</span></div>
+<div class='line'><span class='linenums'>523</span>| [08/07/19 20:09:46] </span><span class='green'>Fast pickit active.</span></div>
+<div class='line'><span class='linenums'>524</span>| [08/07/19 20:09:46] </span><span class='yellow'>Map Thread Loaded</span></div>
+<div class='line'><span class='linenums'>525</span>| [08/07/19 20:09:47] Heartbeat loaded</span></div>
+<div class='line'><span class='linenums'>526</span>| [08/07/19 20:09:47] </span><span class='green'>Party thread loaded. Mode: Accept</span></div>
+<div class='line'><span class='linenums'>527</span>| [08/07/19 20:09:47] 0 entries in shit list.</span></div>
+<div class='line'><span class='linenums'>528</span>| [08/07/19 20:09:47] </span><span class='green'>Loading MyStuff.js !</span></div>
+<div class='line'><span class='linenums'>529</span>| [08/07/19 20:09:47] </span><span class='green'>ToolsThread loaded!!</span></div>
+<div class='line'><span class='linenums'>530</span>| [08/07/19 20:09:47] </span><span class='blue'>Start ToolsThread script</span></div>
+<div class='line'><span class='linenums'>531</span>| [08/07/19 20:09:47] </span><span class='green'>Starting script: </span><span class='yellow'>Mausoleum</span></div>
+<div class='line'><span class='linenums'>532</span>| [08/07/19 20:10:00] </span><span class='lightgold'>Min/Max/Avg # of Unique Monsters for Mausoleum: 4/6/5</span></div>
+<div class='line'><span class='linenums'>533</span>| [08/07/19 20:10:00] </span><span class='lightgold'>Min/Max/Avg # of Unique Packs for Mausoleum: 3/5/4</span></div>
+<div class='line'><span class='linenums'>534</span>| [08/07/19 20:10:10] </span><span class='red'>Pausing.</span></div>
+<div class='line'><span class='linenums'>535</span>| [08/07/19 20:20:09] </span><span class='gold'>MF: </span><span class='white'>208 </span><span class='gold'>GF: </span><span class='white'>160 </span><span class='red'>FR: </span><span class='white'>175 </span><span class='blue'>CR: </span><span class='white'>210 </span><span class='yellow'>LR: </span><span class='white'>243 </span><span class='green'>PR: </span><span class='white'>240</span></div>
+<div class='line'><span class='linenums'>536</span>| [08/07/19 20:20:09] FCR: 105 IAS: 0 FBR: 0 FHR: 115 FRW: 35</span></div>
+<div class='line'><span class='linenums'>537</span>| [08/07/19 20:20:09] CB: 0 DS: 0 OW: 0 </span><span class='red'>LL: </span><span class='white'>10 </span><span class='blue'>ML: </span><span class='white'>10 DR: 0% + 0 MDR: 0% + 15</span></div>
+<div class='line'><span class='linenums'>538</span>| [08/07/19 20:20:09] My coord: 5824, 4744</span></div>
+<div class='line'><span class='linenums'>539</span>| [08/07/19 20:20:10] </span><span class='green'>D2BS</span><span class='white'> :: Stopping all scripts</span></div>
+<div class='line'><span class='linenums'>540</span>| [08/07/19 20:20:10] Script default.dbj ended</span></div>
+<div class='line'><span class='linenums'>541</span>| [08/07/19 20:20:10] Script tools\heartbeat.js ended</span></div>
+<div class='line'><span class='linenums'>542</span>| [08/07/19 20:20:10] Script tools\maphelper.js ended</span></div>
+<div class='line'><span class='linenums'>543</span>| [08/07/19 20:20:10] Script tools\mapthread.js ended</span></div>
+<div class='line'><span class='linenums'>544</span>| [08/07/19 20:20:10] Script tools\party.js ended</span></div>
+<div class='line'><span class='linenums'>545</span>| [08/07/19 20:20:10] Script tools\toolsthread.js ended</span></div>
+<div class='line'><span class='linenums'>546</span>| [08/07/19 20:20:10] Script tools\townchicken.js ended</span></div>
+<div class='line'><span class='linenums'>547</span>| [08/07/19 20:20:10] </span><span class='green'>D2BS</span><span class='white'> :: Started default.dbj</span></div>
+<div class='line'><span class='linenums'>548</span>| [08/07/19 20:20:10] </span><span class='green'>Fast pickit active.</span></div>
+<div class='line'><span class='linenums'>549</span>| [08/07/19 20:20:10] </span><span class='green'>Starting script: </span><span class='yellow'>Mausoleum</span></div>
+<div class='line'><span class='linenums'>550</span>| [08/07/19 20:20:10] </span><span class='yellow'>Map Thread Loaded</span></div>
+<div class='line'><span class='linenums'>551</span>| [08/07/19 20:20:10] Heartbeat loaded</span></div>
+<div class='line'><span class='linenums'>552</span>| [08/07/19 20:20:10] </span><span class='green'>Party thread loaded. Mode: Accept</span></div>
+<div class='line'><span class='linenums'>553</span>| [08/07/19 20:20:10] 0 entries in shit list.</span></div>
+<div class='line'><span class='linenums'>554</span>| [08/07/19 20:20:10] </span><span class='green'>Loading MyStuff.js !</span></div>
+<div class='line'><span class='linenums'>555</span>| [08/07/19 20:20:10] </span><span class='green'>ToolsThread loaded!!</span></div>
+<div class='line'><span class='linenums'>556</span>| [08/07/19 20:20:10] </span><span class='blue'>Start ToolsThread script</span></div>
+<div class='line'><span class='linenums'>557</span>| [08/07/19 20:20:23] </span><span class='lightgold'>Min/Max/Avg # of Unique Monsters for Mausoleum: 4/6/5</span></div>
+<div class='line'><span class='linenums'>558</span>| [08/07/19 20:20:24] </span><span class='lightgold'>Min/Max/Avg # of Unique Packs for Mausoleum: 3/5/4</span></div>
+<div class='line'><span class='linenums'>559</span>| [08/07/19 20:48:14] </span><span class='red'>Pausing.</span></div>
+<div class='line'><span class='linenums'>560</span>| [08/07/19 20:56:23] </span><span class='gold'>MF: </span><span class='white'>208 </span><span class='gold'>GF: </span><span class='white'>160 </span><span class='red'>FR: </span><span class='white'>175 </span><span class='blue'>CR: </span><span class='white'>210 </span><span class='yellow'>LR: </span><span class='white'>243 </span><span class='green'>PR: </span><span class='white'>240</span></div>
+<div class='line'><span class='linenums'>561</span>| [08/07/19 20:56:23] FCR: 105 IAS: 0 FBR: 0 FHR: 115 FRW: 35</span></div>
+<div class='line'><span class='linenums'>562</span>| [08/07/19 20:56:23] CB: 0 DS: 0 OW: 0 </span><span class='red'>LL: </span><span class='white'>10 </span><span class='blue'>ML: </span><span class='white'>10 DR: 0% + 0 MDR: 0% + 15</span></div>
+<div class='line'><span class='linenums'>563</span>| [08/07/19 20:56:23] My coord: 5825, 4745</span></div>
+<div class='line'><span class='linenums'>564</span>| [08/07/19 20:56:33] </span><span class='green'>D2BS</span><span class='white'> :: Stopping all scripts</span></div>
+<div class='line'><span class='linenums'>565</span>| [08/07/19 20:56:33] Script default.dbj ended</span></div>
+<div class='line'><span class='linenums'>566</span>| [08/07/19 20:56:33] Script tools\heartbeat.js ended</span></div>
+<div class='line'><span class='linenums'>567</span>| [08/07/19 20:56:34] Script tools\maphelper.js ended</span></div>
+<div class='line'><span class='linenums'>568</span>| [08/07/19 20:56:34] Script tools\mapthread.js ended</span></div>
+<div class='line'><span class='linenums'>569</span>| [08/07/19 20:56:34] Script tools\party.js ended</span></div>
+<div class='line'><span class='linenums'>570</span>| [08/07/19 20:56:34] Script tools\toolsthread.js ended</span></div>
+<div class='line'><span class='linenums'>571</span>| [08/07/19 20:56:34] Script tools\townchicken.js ended</span></div>
+<div class='line'><span class='linenums'>572</span>| [08/07/19 20:56:34] </span><span class='green'>D2BS</span><span class='white'> :: Started default.dbj</span></div>
+<div class='line'><span class='linenums'>573</span>| [08/07/19 20:56:34] </span><span class='green'>Fast pickit active.</span></div>
+<div class='line'><span class='linenums'>574</span>| [08/07/19 20:56:34] </span><span class='green'>Starting script: </span><span class='yellow'>Mausoleum</span></div>
+<div class='line'><span class='linenums'>575</span>| [08/07/19 20:56:34] </span><span class='yellow'>Map Thread Loaded</span></div>
+<div class='line'><span class='linenums'>576</span>| [08/07/19 20:56:34] Heartbeat loaded</span></div>
+<div class='line'><span class='linenums'>577</span>| [08/07/19 20:56:34] </span><span class='green'>Party thread loaded. Mode: Accept</span></div>
+<div class='line'><span class='linenums'>578</span>| [08/07/19 20:56:34] 0 entries in shit list.</span></div>
+<div class='line'><span class='linenums'>579</span>| [08/07/19 20:56:34] </span><span class='green'>Loading MyStuff.js !</span></div>
+<div class='line'><span class='linenums'>580</span>| [08/07/19 20:56:34] </span><span class='green'>ToolsThread loaded!!</span></div>
+<div class='line'><span class='linenums'>581</span>| [08/07/19 20:56:34] </span><span class='blue'>Start ToolsThread script</span></div>
+<div class='line'><span class='linenums'>582</span>| [08/07/19 20:56:46] </span><span class='lightgold'>Min/Max/Avg # of Unique Monsters for Mausoleum: 4/6/5</span></div>
+<div class='line'><span class='linenums'>583</span>| [08/07/19 20:56:46] </span><span class='lightgold'>Min/Max/Avg # of Unique Packs for Mausoleum: 3/5/4</span></div>
+<div class='line'><span class='linenums'>584</span>| [08/07/19 20:56:46] </span><span class='red'># of Chest Rooms: 6</span></div>
+<div class='line'><span class='linenums'>585</span>| [08/07/19 20:56:46] </span><span class='red'># of Rooms to Skip: 11</span></div>
+<div class='line'><span class='linenums'>586</span>| [08/07/19 20:56:46] </span><span class='red'>Error in </span><span class='white'>Mausoleum </span><span class='red'>(attack.js line </span><span class='red'>1058): </span><span class='red'>y2 is not defined</span></div>
+<div class='line'><span class='linenums'>587</span>| [08/07/19 20:56:46] </span><span class='green'>Starting script: </span><span class='yellow'>AncientTunnels</span></div>
+<div class='line'><span class='linenums'>588</span>| [08/07/19 20:56:49] </span><span class='red'>Pausing.</span></div>
+<div class='line'><span class='linenums'>589</span>| [08/07/19 20:58:36] </span><span class='gold'>MF: </span><span class='white'>208 </span><span class='gold'>GF: </span><span class='white'>160 </span><span class='red'>FR: </span><span class='white'>175 </span><span class='blue'>CR: </span><span class='white'>210 </span><span class='yellow'>LR: </span><span class='white'>243 </span><span class='green'>PR: </span><span class='white'>240</span></div>
+<div class='line'><span class='linenums'>590</span>| [08/07/19 20:58:36] FCR: 105 IAS: 0 FBR: 0 FHR: 115 FRW: 35</span></div>
+<div class='line'><span class='linenums'>591</span>| [08/07/19 20:58:36] CB: 0 DS: 0 OW: 0 </span><span class='red'>LL: </span><span class='white'>10 </span><span class='blue'>ML: </span><span class='white'>10 DR: 0% + 0 MDR: 0% + 15</span></div>
+<div class='line'><span class='linenums'>592</span>| [08/07/19 20:58:36] My coord: 5815, 4717</span></div>
+<div class='line'><span class='linenums'>593</span>| [08/07/19 20:58:44] </span><span class='green'>D2BS</span><span class='white'> :: Stopping all scripts</span></div>
+<div class='line'><span class='linenums'>594</span>| [08/07/19 20:58:44] Script default.dbj ended</span></div>
+<div class='line'><span class='linenums'>595</span>| [08/07/19 20:58:44] Script tools\heartbeat.js ended</span></div>
+<div class='line'><span class='linenums'>596</span>| [08/07/19 20:58:44] Script tools\maphelper.js ended</span></div>
+<div class='line'><span class='linenums'>597</span>| [08/07/19 20:58:44] Script tools\mapthread.js ended</span></div>
+<div class='line'><span class='linenums'>598</span>| [08/07/19 20:58:44] Script tools\party.js ended</span></div>
+<div class='line'><span class='linenums'>599</span>| [08/07/19 20:58:44] Script tools\toolsthread.js ended</span></div>
+<div class='line'><span class='linenums'>600</span>| [08/07/19 20:58:44] Script tools\townchicken.js ended</span></div>
+<div class='line'><span class='linenums'>601</span>| [08/07/19 20:58:44] </span><span class='green'>D2BS</span><span class='white'> :: Started default.dbj</span></div>
+<div class='line'><span class='linenums'>602</span>| [08/07/19 20:58:44] </span><span class='green'>Fast pickit active.</span></div>
+<div class='line'><span class='linenums'>603</span>| [08/07/19 20:58:44] </span><span class='green'>Starting script: </span><span class='yellow'>Mausoleum</span></div>
+<div class='line'><span class='linenums'>604</span>| [08/07/19 20:58:44] </span><span class='yellow'>Map Thread Loaded</span></div>
+<div class='line'><span class='linenums'>605</span>| [08/07/19 20:58:44] Heartbeat loaded</span></div>
+<div class='line'><span class='linenums'>606</span>| [08/07/19 20:58:44] </span><span class='green'>Party thread loaded. Mode: Accept</span></div>
+<div class='line'><span class='linenums'>607</span>| [08/07/19 20:58:44] 0 entries in shit list.</span></div>
+<div class='line'><span class='linenums'>608</span>| [08/07/19 20:58:45] </span><span class='green'>Loading MyStuff.js !</span></div>
+<div class='line'><span class='linenums'>609</span>| [08/07/19 20:58:45] </span><span class='green'>ToolsThread loaded!!</span></div>
+<div class='line'><span class='linenums'>610</span>| [08/07/19 20:58:45] </span><span class='blue'>Start ToolsThread script</span></div>
+<div class='line'><span class='linenums'>611</span>| [08/07/19 20:58:52] </span><span class='lightgold'>Min/Max/Avg # of Unique Monsters for Mausoleum: 4/6/5</span></div>
+<div class='line'><span class='linenums'>612</span>| [08/07/19 20:58:52] </span><span class='lightgold'>Min/Max/Avg # of Unique Packs for Mausoleum: 3/5/4</span></div>
+<div class='line'><span class='linenums'>613</span>| [08/07/19 20:58:53] </span><span class='red'># of Chest Rooms: 6</span></div>
+<div class='line'><span class='linenums'>614</span>| [08/07/19 20:58:53] </span><span class='red'># of Rooms to Skip: 11</span></div>
+<div class='line'><span class='linenums'>615</span>| [08/07/19 20:58:53] </span><span class='red'>Error in </span><span class='white'>Mausoleum </span><span class='red'>(attack.js line </span><span class='red'>1064): </span><span class='red'>room is not defined</span></div>
+<div class='line'><span class='linenums'>616</span>| [08/07/19 20:58:53] </span><span class='green'>Starting script: </span><span class='yellow'>AncientTunnels</span></div>
+<div class='line'><span class='linenums'>617</span>| [08/07/19 20:58:54] </span><span class='red'>Pausing.</span></div>
+<div class='line'><span class='linenums'>618</span>| [08/07/19 21:01:34] </span><span class='gold'>MF: </span><span class='white'>208 </span><span class='gold'>GF: </span><span class='white'>160 </span><span class='red'>FR: </span><span class='white'>175 </span><span class='blue'>CR: </span><span class='white'>210 </span><span class='yellow'>LR: </span><span class='white'>243 </span><span class='green'>PR: </span><span class='white'>240</span></div>
+<div class='line'><span class='linenums'>619</span>| [08/07/19 21:01:34] FCR: 105 IAS: 0 FBR: 0 FHR: 115 FRW: 35</span></div>
+<div class='line'><span class='linenums'>620</span>| [08/07/19 21:01:34] CB: 0 DS: 0 OW: 0 </span><span class='red'>LL: </span><span class='white'>10 </span><span class='blue'>ML: </span><span class='white'>10 DR: 0% + 0 MDR: 0% + 15</span></div>
+<div class='line'><span class='linenums'>621</span>| [08/07/19 21:01:34] My coord: 5822, 4732</span></div>
+<div class='line'><span class='linenums'>622</span>| [08/07/19 21:01:36] </span><span class='green'>D2BS</span><span class='white'> :: Stopping all scripts</span></div>
+<div class='line'><span class='linenums'>623</span>| [08/07/19 21:01:36] Script default.dbj ended</span></div>
+<div class='line'><span class='linenums'>624</span>| [08/07/19 21:01:36] Script tools\heartbeat.js ended</span></div>
+<div class='line'><span class='linenums'>625</span>| [08/07/19 21:01:36] Script tools\maphelper.js ended</span></div>
+<div class='line'><span class='linenums'>626</span>| [08/07/19 21:01:36] Script tools\mapthread.js ended</span></div>
+<div class='line'><span class='linenums'>627</span>| [08/07/19 21:01:36] Script tools\party.js ended</span></div>
+<div class='line'><span class='linenums'>628</span>| [08/07/19 21:01:36] Script tools\toolsthread.js ended</span></div>
+<div class='line'><span class='linenums'>629</span>| [08/07/19 21:01:36] Script tools\townchicken.js ended</span></div>
+<div class='line'><span class='linenums'>630</span>| [08/07/19 21:01:36] </span><span class='green'>D2BS</span><span class='white'> :: Started default.dbj</span></div>
+<div class='line'><span class='linenums'>631</span>| [08/07/19 21:01:36] </span><span class='green'>Fast pickit active.</span></div>
+<div class='line'><span class='linenums'>632</span>| [08/07/19 21:01:36] </span><span class='green'>Starting script: </span><span class='yellow'>Mausoleum</span></div>
+<div class='line'><span class='linenums'>633</span>| [08/07/19 21:01:36] </span><span class='yellow'>Map Thread Loaded</span></div>
+<div class='line'><span class='linenums'>634</span>| [08/07/19 21:01:36] Heartbeat loaded</span></div>
+<div class='line'><span class='linenums'>635</span>| [08/07/19 21:01:36] </span><span class='green'>Party thread loaded. Mode: Accept</span></div>
+<div class='line'><span class='linenums'>636</span>| [08/07/19 21:01:36] 0 entries in shit list.</span></div>
+<div class='line'><span class='linenums'>637</span>| [08/07/19 21:01:36] </span><span class='green'>Loading MyStuff.js !</span></div>
+<div class='line'><span class='linenums'>638</span>| [08/07/19 21:01:36] </span><span class='green'>ToolsThread loaded!!</span></div>
+<div class='line'><span class='linenums'>639</span>| [08/07/19 21:01:36] </span><span class='blue'>Start ToolsThread script</span></div>
+<div class='line'><span class='linenums'>640</span>| [08/07/19 21:01:45] </span><span class='lightgold'>Min/Max/Avg # of Unique Monsters for Mausoleum: 4/6/5</span></div>
+<div class='line'><span class='linenums'>641</span>| [08/07/19 21:01:45] </span><span class='lightgold'>Min/Max/Avg # of Unique Packs for Mausoleum: 3/5/4</span></div>
+<div class='line'><span class='linenums'>642</span>| [08/07/19 21:01:45] </span><span class='red'># of Chest Rooms: 6</span></div>
+<div class='line'><span class='linenums'>643</span>| [08/07/19 21:01:45] </span><span class='red'># of Rooms to Skip: 11</span></div>
+<div class='line'><span class='linenums'>644</span>| [08/07/19 21:01:45] </span><span class='green'># of Rooms to Visit: 20</span></div>
+<div class='line'><span class='linenums'>645</span>| [08/07/19 21:01:55] </span><span class='red'>Pausing.</span></div>
+<div class='line'><span class='linenums'>646</span>| [08/07/19 21:05:16] </span><span class='gold'>MF: </span><span class='white'>208 </span><span class='gold'>GF: </span><span class='white'>160 </span><span class='red'>FR: </span><span class='white'>175 </span><span class='blue'>CR: </span><span class='white'>210 </span><span class='yellow'>LR: </span><span class='white'>243 </span><span class='green'>PR: </span><span class='white'>240</span></div>
+<div class='line'><span class='linenums'>647</span>| [08/07/19 21:05:16] FCR: 105 IAS: 0 FBR: 0 FHR: 115 FRW: 35</span></div>
+<div class='line'><span class='linenums'>648</span>| [08/07/19 21:05:16] CB: 0 DS: 0 OW: 0 </span><span class='red'>LL: </span><span class='white'>10 </span><span class='blue'>ML: </span><span class='white'>10 DR: 0% + 0 MDR: 0% + 15</span></div>
+<div class='line'><span class='linenums'>649</span>| [08/07/19 21:05:16] My coord: 5817, 4719</span></div>
+<div class='line'><span class='linenums'>650</span>| [08/07/19 21:05:24] </span><span class='green'>D2BS</span><span class='white'> :: Stopping all scripts</span></div>
+<div class='line'><span class='linenums'>651</span>| [08/07/19 21:05:24] Script default.dbj ended</span></div>
+<div class='line'><span class='linenums'>652</span>| [08/07/19 21:05:24] ========================================</span></div>
+<div class='line'><span class='linenums'>653</span>| [08/07/19 21:05:24] Script tools\heartbeat.js ended</span></div>
+<div class='line'><span class='linenums'>654</span>| [08/07/19 21:05:24] Script tools\maphelper.js ended</span></div>
+<div class='line'><span class='linenums'>655</span>| [08/07/19 21:05:24] Script tools\mapthread.js ended</span></div>
+<div class='line'><span class='linenums'>656</span>| [08/07/19 21:05:24] Script tools\party.js ended</span></div>
+<div class='line'><span class='linenums'>657</span>| [08/07/19 21:05:24] Script tools\toolsthread.js ended</span></div>
+<div class='line'><span class='linenums'>658</span>| [08/07/19 21:05:24] Script tools\townchicken.js ended</span></div>
+<div class='line'><span class='linenums'>659</span>| [08/07/19 21:05:24] </span><span class='green'>D2BS</span><span class='white'> :: Started default.dbj</span></div>
+<div class='line'><span class='linenums'>660</span>| [08/07/19 21:05:24] </span><span class='green'>Fast pickit active.</span></div>
+<div class='line'><span class='linenums'>661</span>| [08/07/19 21:05:24] </span><span class='yellow'>Map Thread Loaded</span></div>
+<div class='line'><span class='linenums'>662</span>| [08/07/19 21:05:24] Heartbeat loaded</span></div>
+<div class='line'><span class='linenums'>663</span>| [08/07/19 21:05:24] </span><span class='green'>Party thread loaded. Mode: Accept</span></div>
+<div class='line'><span class='linenums'>664</span>| [08/07/19 21:05:24] 0 entries in shit list.</span></div>
+<div class='line'><span class='linenums'>665</span>| [08/07/19 21:05:24] </span><span class='green'>Loading MyStuff.js !</span></div>
+<div class='line'><span class='linenums'>666</span>| [08/07/19 21:05:24] </span><span class='green'>ToolsThread loaded!!</span></div>
+<div class='line'><span class='linenums'>667</span>| [08/07/19 21:05:24] </span><span class='blue'>Start ToolsThread script</span></div>
+<div class='line'><span class='linenums'>668</span>| [08/07/19 21:05:24] </span><span class='green'>Starting script: </span><span class='yellow'>Mausoleum</span></div>
+<div class='line'><span class='linenums'>669</span>| [08/07/19 21:05:32] </span><span class='lightgold'>Min/Max/Avg # of Unique Monsters for Mausoleum: 4/6/5</span></div>
+<div class='line'><span class='linenums'>670</span>| [08/07/19 21:05:32] </span><span class='lightgold'>Min/Max/Avg # of Unique Packs for Mausoleum: 3/5/4</span></div>
+<div class='line'><span class='linenums'>671</span>| [08/07/19 21:05:33] </span><span class='red'># of Chest Rooms: 6</span></div>
+<div class='line'><span class='linenums'>672</span>| [08/07/19 21:05:33] </span><span class='red'># of Rooms to Skip: 11</span></div>
+<div class='line'><span class='linenums'>673</span>| [08/07/19 21:05:33] </span><span class='green'># of Rooms to Visit: 20</span></div>
+<div class='line'><span class='linenums'>674</span>| [08/07/19 21:06:45] </span><span class='red'>Pausing.</span></div>
+<div class='line'><span class='linenums'>675</span>| [08/07/19 22:04:09] </span><span class='gold'>MF: </span><span class='white'>208 </span><span class='gold'>GF: </span><span class='white'>160 </span><span class='red'>FR: </span><span class='white'>175 </span><span class='blue'>CR: </span><span class='white'>210 </span><span class='yellow'>LR: </span><span class='white'>243 </span><span class='green'>PR: </span><span class='white'>240</span></div>
+<div class='line'><span class='linenums'>676</span>| [08/07/19 22:04:09] FCR: 105 IAS: 0 FBR: 0 FHR: 115 FRW: 35</span></div>
+<div class='line'><span class='linenums'>677</span>| [08/07/19 22:04:09] CB: 0 DS: 0 OW: 0 </span><span class='red'>LL: </span><span class='white'>10 </span><span class='blue'>ML: </span><span class='white'>10 DR: 0% + 0 MDR: 0% + 15</span></div>
+<div class='line'><span class='linenums'>678</span>| [08/07/19 22:04:09] My coord: 10014, 6641</span></div>
+<div class='line'><span class='linenums'>679</span>| [08/07/19 22:04:11] </span><span class='green'>D2BS</span><span class='white'> :: Stopping all scripts</span></div>
+<div class='line'><span class='linenums'>680</span>| [08/07/19 22:04:11] Script default.dbj ended</span></div>
+<div class='line'><span class='linenums'>681</span>| [08/07/19 22:04:11] ========================================</span></div>
+<div class='line'><span class='linenums'>682</span>| [08/07/19 22:04:11] Script tools\heartbeat.js ended</span></div>
+<div class='line'><span class='linenums'>683</span>| [08/07/19 22:04:11] Script tools\maphelper.js ended</span></div>
+<div class='line'><span class='linenums'>684</span>| [08/07/19 22:04:11] Script tools\mapthread.js ended</span></div>
+<div class='line'><span class='linenums'>685</span>| [08/07/19 22:04:11] Script tools\party.js ended</span></div>
+<div class='line'><span class='linenums'>686</span>| [08/07/19 22:04:11] Script tools\toolsthread.js ended</span></div>
+<div class='line'><span class='linenums'>687</span>| [08/07/19 22:04:11] Script tools\townchicken.js ended</span></div>
+<div class='line'><span class='linenums'>688</span>| [08/07/19 22:04:11] </span><span class='green'>D2BS</span><span class='white'> :: Started default.dbj</span></div>
+<div class='line'><span class='linenums'>689</span>| [08/07/19 22:04:11] </span><span class='green'>Fast pickit active.</span></div>
+<div class='line'><span class='linenums'>690</span>| [08/07/19 22:04:11] </span><span class='yellow'>Map Thread Loaded</span></div>
+<div class='line'><span class='linenums'>691</span>| [08/07/19 22:04:11] Heartbeat loaded</span></div>
+<div class='line'><span class='linenums'>692</span>| [08/07/19 22:04:11] </span><span class='green'>Party thread loaded. Mode: Accept</span></div>
+<div class='line'><span class='linenums'>693</span>| [08/07/19 22:04:11] 0 entries in shit list.</span></div>
+<div class='line'><span class='linenums'>694</span>| [08/07/19 22:04:11] </span><span class='green'>Loading MyStuff.js !</span></div>
+<div class='line'><span class='linenums'>695</span>| [08/07/19 22:04:11] </span><span class='green'>ToolsThread loaded!!</span></div>
+<div class='line'><span class='linenums'>696</span>| [08/07/19 22:04:11] </span><span class='blue'>Start ToolsThread script</span></div>
+<div class='line'><span class='linenums'>697</span>| [08/07/19 22:04:11] </span><span class='green'>Starting script: </span><span class='yellow'>Mausoleum</span></div>
+<div class='line'><span class='linenums'>698</span>| [08/07/19 22:04:22] </span><span class='lightgold'>Min/Max/Avg # of Unique Monsters for Mausoleum: 4/6/5</span></div>
+<div class='line'><span class='linenums'>699</span>| [08/07/19 22:04:22] </span><span class='lightgold'>Min/Max/Avg # of Unique Packs for Mausoleum: 3/5/4</span></div>
+<div class='line'><span class='linenums'>700</span>| [08/07/19 22:04:22] [Strict Warning] Code(162) File(i:\games\d2kolbot3\trunk\d2bs\kolbot\libs\common\attack.js:1236) reference to undefined property this.ChestRoomNums</span></div>
+<div class='line'><span class='linenums'>701| Line: (null)</span></div>
+<div class='line'><span class='linenums'>702</span>| [08/07/19 22:04:22] [</span><span class='yellow'>Strict Warning</span><span class='white'> (162)] File(kolbot\libs\common\attack.js:1236) reference to undefined property this.ChestRoomNums</span></div>
+<div class='line'><span class='linenums'>703</span>| [08/07/19 22:04:22] </span><span class='red'>Error in </span><span class='white'>Mausoleum </span><span class='red'>(attack.js line </span><span class='red'>1236): </span><span class='red'>this.ChestRoomNums is undefined</span></div>
+<div class='line'><span class='linenums'>704</span>| [08/07/19 22:04:22] </span><span class='green'>Starting script: </span><span class='yellow'>AncientTunnels</span></div>
+<div class='line'><span class='linenums'>705</span>| [08/07/19 22:04:24] </span><span class='red'>Pausing.</span></div>
+<div class='line'><span class='linenums'>706</span>| [08/07/19 22:05:23] </span><span class='gold'>MF: </span><span class='white'>208 </span><span class='gold'>GF: </span><span class='white'>160 </span><span class='red'>FR: </span><span class='white'>175 </span><span class='blue'>CR: </span><span class='white'>210 </span><span class='yellow'>LR: </span><span class='white'>243 </span><span class='green'>PR: </span><span class='white'>240</span></div>
+<div class='line'><span class='linenums'>707</span>| [08/07/19 22:05:23] FCR: 105 IAS: 0 FBR: 0 FHR: 115 FRW: 35</span></div>
+<div class='line'><span class='linenums'>708</span>| [08/07/19 22:05:23] CB: 0 DS: 0 OW: 0 </span><span class='red'>LL: </span><span class='white'>10 </span><span class='blue'>ML: </span><span class='white'>10 DR: 0% + 0 MDR: 0% + 15</span></div>
+<div class='line'><span class='linenums'>709</span>| [08/07/19 22:05:23] My coord: 5822, 4732</span></div>
+<div class='line'><span class='linenums'>710</span>| [08/07/19 22:05:32] </span><span class='green'>D2BS</span><span class='white'> :: Stopping all scripts</span></div>
+<div class='line'><span class='linenums'>711</span>| [08/07/19 22:05:32] Script default.dbj ended</span></div>
+<div class='line'><span class='linenums'>712</span>| [08/07/19 22:05:32] Script tools\heartbeat.js ended</span></div>
+<div class='line'><span class='linenums'>713</span>| [08/07/19 22:05:32] Script tools\maphelper.js ended</span></div>
+<div class='line'><span class='linenums'>714</span>| [08/07/19 22:05:32] Script tools\mapthread.js ended</span></div>
+<div class='line'><span class='linenums'>715</span>| [08/07/19 22:05:32] Script tools\party.js ended</span></div>
+<div class='line'><span class='linenums'>716</span>| [08/07/19 22:05:32] Script tools\toolsthread.js ended</span></div>
+<div class='line'><span class='linenums'>717</span>| [08/07/19 22:05:32] Script tools\townchicken.js ended</span></div>
+<div class='line'><span class='linenums'>718</span>| [08/07/19 22:05:32] </span><span class='green'>D2BS</span><span class='white'> :: Started default.dbj</span></div>
+<div class='line'><span class='linenums'>719</span>| [08/07/19 22:05:32] </span><span class='green'>Fast pickit active.</span></div>
+<div class='line'><span class='linenums'>720</span>| [08/07/19 22:05:32] </span><span class='green'>Starting script: </span><span class='yellow'>Mausoleum</span></div>
+<div class='line'><span class='linenums'>721</span>| [08/07/19 22:05:32] Heartbeat loaded</span></div>
+<div class='line'><span class='linenums'>722</span>| [08/07/19 22:05:32] </span><span class='yellow'>Map Thread Loaded</span></div>
+<div class='line'><span class='linenums'>723</span>| [08/07/19 22:05:32] </span><span class='green'>Party thread loaded. Mode: Accept</span></div>
+<div class='line'><span class='linenums'>724</span>| [08/07/19 22:05:32] 0 entries in shit list.</span></div>
+<div class='line'><span class='linenums'>725</span>| [08/07/19 22:05:32] </span><span class='green'>Loading MyStuff.js !</span></div>
+<div class='line'><span class='linenums'>726</span>| [08/07/19 22:05:32] </span><span class='green'>ToolsThread loaded!!</span></div>
+<div class='line'><span class='linenums'>727</span>| [08/07/19 22:05:32] </span><span class='blue'>Start ToolsThread script</span></div>
+<div class='line'><span class='linenums'>728</span>| [08/07/19 22:05:41] </span><span class='lightgold'>Min/Max/Avg # of Unique Monsters for Mausoleum: 4/6/5</span></div>
+<div class='line'><span class='linenums'>729</span>| [08/07/19 22:05:41] </span><span class='lightgold'>Min/Max/Avg # of Unique Packs for Mausoleum: 3/5/4</span></div>
+<div class='line'><span class='linenums'>730</span>| [08/07/19 22:05:41] </span><span class='green'># of Rooms to Visit: 36</span></div>
+<div class='line'><span class='linenums'>731</span>| [08/07/19 22:06:29] </span><span class='gold'>MF: </span><span class='white'>208 </span><span class='gold'>GF: </span><span class='white'>160 </span><span class='red'>FR: </span><span class='white'>175 </span><span class='blue'>CR: </span><span class='white'>210 </span><span class='yellow'>LR: </span><span class='white'>243 </span><span class='green'>PR: </span><span class='white'>240</span></div>
+<div class='line'><span class='linenums'>732</span>| [08/07/19 22:06:29] FCR: 105 IAS: 0 FBR: 0 FHR: 115 FRW: 35</span></div>
+<div class='line'><span class='linenums'>733</span>| [08/07/19 22:06:29] CB: 0 DS: 0 OW: 0 </span><span class='red'>LL: </span><span class='white'>10 </span><span class='blue'>ML: </span><span class='white'>10 DR: 0% + 0 MDR: 0% + 15</span></div>
+<div class='line'><span class='linenums'>734</span>| [08/07/19 22:06:29] My coord: 5827, 4748</span></div>
+<div class='line'><span class='linenums'>735</span>| [08/07/19 22:06:31] </span><span class='green'>D2BS</span><span class='white'> :: Stopping all scripts</span></div>
+<div class='line'><span class='linenums'>736</span>| [08/07/19 22:06:31] Script default.dbj ended</span></div>
+<div class='line'><span class='linenums'>737</span>| [08/07/19 22:06:31] ========================================</span></div>
+<div class='line'><span class='linenums'>738</span>| [08/07/19 22:06:31] Script tools\heartbeat.js ended</span></div>
+<div class='line'><span class='linenums'>739</span>| [08/07/19 22:06:31] Script tools\maphelper.js ended</span></div>
+<div class='line'><span class='linenums'>740</span>| [08/07/19 22:06:31] Script tools\mapthread.js ended</span></div>
+<div class='line'><span class='linenums'>741</span>| [08/07/19 22:06:31] Script tools\party.js ended</span></div>
+<div class='line'><span class='linenums'>742</span>| [08/07/19 22:06:31] Script tools\toolsthread.js ended</span></div>
+<div class='line'><span class='linenums'>743</span>| [08/07/19 22:06:31] Script tools\townchicken.js ended</span></div>
+<div class='line'><span class='linenums'>744</span>| [08/07/19 22:06:31] </span><span class='green'>D2BS</span><span class='white'> :: Started default.dbj</span></div>
+<div class='line'><span class='linenums'>745</span>| [08/07/19 22:06:31] </span><span class='green'>Fast pickit active.</span></div>
+<div class='line'><span class='linenums'>746</span>| [08/07/19 22:06:31] </span><span class='green'>Starting script: </span><span class='yellow'>Mausoleum</span></div>
+<div class='line'><span class='linenums'>747</span>| [08/07/19 22:06:31] </span><span class='yellow'>Map Thread Loaded</span></div>
+<div class='line'><span class='linenums'>748</span>| [08/07/19 22:06:31] Heartbeat loaded</span></div>
+<div class='line'><span class='linenums'>749</span>| [08/07/19 22:06:31] </span><span class='green'>Party thread loaded. Mode: Accept</span></div>
+<div class='line'><span class='linenums'>750</span>| [08/07/19 22:06:31] 0 entries in shit list.</span></div>
+<div class='line'><span class='linenums'>751</span>| [08/07/19 22:06:31] </span><span class='green'>Loading MyStuff.js !</span></div>
+<div class='line'><span class='linenums'>752</span>| [08/07/19 22:06:31] </span><span class='green'>ToolsThread loaded!!</span></div>
+<div class='line'><span class='linenums'>753</span>| [08/07/19 22:06:31] </span><span class='blue'>Start ToolsThread script</span></div>
+<div class='line'><span class='linenums'>754</span>| [08/07/19 22:06:41] </span><span class='lightgold'>Min/Max/Avg # of Unique Monsters for Mausoleum: 4/6/5</span></div>
+<div class='line'><span class='linenums'>755</span>| [08/07/19 22:06:41] </span><span class='lightgold'>Min/Max/Avg # of Unique Packs for Mausoleum: 3/5/4</span></div>
+<div class='line'><span class='linenums'>756</span>| [08/07/19 22:06:41] </span><span class='green'># of Rooms to Visit: 36</span></div>
+<div class='line'><span class='linenums'>757</span>| [08/07/19 22:09:30] </span><span class='gold'>MF: </span><span class='white'>208 </span><span class='gold'>GF: </span><span class='white'>160 </span><span class='red'>FR: </span><span class='white'>175 </span><span class='blue'>CR: </span><span class='white'>210 </span><span class='yellow'>LR: </span><span class='white'>243 </span><span class='green'>PR: </span><span class='white'>240</span></div>
+<div class='line'><span class='linenums'>758</span>| [08/07/19 22:09:30] FCR: 105 IAS: 0 FBR: 0 FHR: 115 FRW: 35</span></div>
+<div class='line'><span class='linenums'>759</span>| [08/07/19 22:09:30] CB: 0 DS: 0 OW: 0 </span><span class='red'>LL: </span><span class='white'>10 </span><span class='blue'>ML: </span><span class='white'>10 DR: 0% + 0 MDR: 0% + 15</span></div>
+<div class='line'><span class='linenums'>760</span>| [08/07/19 22:09:30] My coord: 5828, 4749</span></div>
+<div class='line'><span class='linenums'>761</span>| [08/07/19 22:09:31] </span><span class='green'>D2BS</span><span class='white'> :: Stopping all scripts</span></div>
+<div class='line'><span class='linenums'>762</span>| [08/07/19 22:09:31] Script default.dbj ended</span></div>
+<div class='line'><span class='linenums'>763</span>| [08/07/19 22:09:31] ========================================</span></div>
+<div class='line'><span class='linenums'>764</span>| [08/07/19 22:09:31] Script tools\heartbeat.js ended</span></div>
+<div class='line'><span class='linenums'>765</span>| [08/07/19 22:09:31] Script tools\maphelper.js ended</span></div>
+<div class='line'><span class='linenums'>766</span>| [08/07/19 22:09:31] Script tools\mapthread.js ended</span></div>
+<div class='line'><span class='linenums'>767</span>| [08/07/19 22:09:31] Script tools\party.js ended</span></div>
+<div class='line'><span class='linenums'>768</span>| [08/07/19 22:09:31] Script tools\toolsthread.js ended</span></div>
+<div class='line'><span class='linenums'>769</span>| [08/07/19 22:09:31] Script tools\townchicken.js ended</span></div>
+<div class='line'><span class='linenums'>770</span>| [08/07/19 22:09:31] </span><span class='green'>D2BS</span><span class='white'> :: Started default.dbj</span></div>
+<div class='line'><span class='linenums'>771</span>| [08/07/19 22:09:31] </span><span class='green'>Fast pickit active.</span></div>
+<div class='line'><span class='linenums'>772</span>| [08/07/19 22:09:31] </span><span class='green'>Starting script: </span><span class='yellow'>Mausoleum</span></div>
+<div class='line'><span class='linenums'>773</span>| [08/07/19 22:09:31] </span><span class='yellow'>Map Thread Loaded</span></div>
+<div class='line'><span class='linenums'>774</span>| [08/07/19 22:09:31] Heartbeat loaded</span></div>
+<div class='line'><span class='linenums'>775</span>| [08/07/19 22:09:31] </span><span class='green'>Party thread loaded. Mode: Accept</span></div>
+<div class='line'><span class='linenums'>776</span>| [08/07/19 22:09:31] 0 entries in shit list.</span></div>
+<div class='line'><span class='linenums'>777</span>| [08/07/19 22:09:31] </span><span class='green'>Loading MyStuff.js !</span></div>
+<div class='line'><span class='linenums'>778</span>| [08/07/19 22:09:31] </span><span class='green'>ToolsThread loaded!!</span></div>
+<div class='line'><span class='linenums'>779</span>| [08/07/19 22:09:31] </span><span class='blue'>Start ToolsThread script</span></div>
+<div class='line'><span class='linenums'>780</span>| [08/07/19 22:09:41] </span><span class='lightgold'>Min/Max/Avg # of Unique Monsters for Mausoleum: 4/6/5</span></div>
+<div class='line'><span class='linenums'>781</span>| [08/07/19 22:09:41] </span><span class='lightgold'>Min/Max/Avg # of Unique Packs for Mausoleum: 3/5/4</span></div>
+<div class='line'><span class='linenums'>782</span>| [08/07/19 22:09:41] </span><span class='green'># of Rooms to Visit: 36</span></div>
+<div class='line'><span class='linenums'>783</span>| [08/07/19 22:19:33] D2BS Shutdown complete.</span></div>
+<div class='line'><span class='linenums'>784</span>| [08/07/19 22:19:35] </span><span class='green'>D2BS</span><span class='white'> :: Started Console Script</span></div>
+<div class='line'><span class='linenums'>785</span>| [08/07/19 22:19:35] D2BS Engine startup complete. 1.5.1880U</span></div>
+<div class='line'><span class='linenums'>786</span>| [08/07/19 22:19:36] </span><span class='green'>D2BS</span><span class='white'> :: Engine startup complete!</span></div>
+<div class='line'><span class='linenums'>787</span>| [08/07/19 22:19:36] </span><span class='green'>D2BS</span><span class='white'> :: Switched to profile SP_GoldenDeth</span></div>
+<div class='line'><span class='linenums'>788</span>| [08/07/19 22:19:36] </span><span class='green'>D2BS</span><span class='white'> :: Starting D2BotLead.dbj</span></div>
+<div class='line'><span class='linenums'>789</span>| [08/07/19 22:19:36] </span><span class='green'>D2BS</span><span class='white'> :: D2BotLead.dbj running.</span></div>
+<div class='line'><span class='linenums'>790</span>| [08/07/19 22:19:36] SP_GoldenDeth</span></div>
+<div class='line'><span class='linenums'>791</span>| [08/07/19 22:19:38] Recieved Game Info</span></div>
+<div class='line'><span class='linenums'>792</span>| [08/07/19 22:19:38] Heartbeat loaded</span></div>
+<div class='line'><span class='linenums'>793</span>| [08/07/19 22:19:40] </span><span class='green'>D2BS</span><span class='white'> :: Starting default.dbj</span></div>
+<div class='line'><span class='linenums'>794</span>| [08/07/19 22:19:40] </span><span class='green'>D2BS</span><span class='white'> :: default.dbj running.</span></div>
+<div class='line'><span class='linenums'>795</span>| [08/07/19 22:19:41] </span><span class='green'>Fast pickit active.</span></div>
+<div class='line'><span class='linenums'>796</span>| [08/07/19 22:19:41] </span><span class='green'>Starting script: </span><span class='yellow'>Mausoleum</span></div>
+<div class='line'><span class='linenums'>797</span>| [08/07/19 22:19:41] </span><span class='yellow'>Map Thread Loaded</span></div>
+<div class='line'><span class='linenums'>798</span>| [08/07/19 22:19:41] </span><span class='green'>Party thread loaded. Mode: Accept</span></div>
+<div class='line'><span class='linenums'>799</span>| [08/07/19 22:19:41] 0 entries in shit list.</span></div>
+<div class='line'><span class='linenums'>800</span>| [08/07/19 22:19:41] </span><span class='green'>Loading MyStuff.js !</span></div>
+<div class='line'><span class='linenums'>801</span>| [08/07/19 22:19:41] </span><span class='green'>ToolsThread loaded!!</span></div>
+<div class='line'><span class='linenums'>802</span>| [08/07/19 22:19:41] </span><span class='blue'>Start ToolsThread script</span></div>
+<div class='line'><span class='linenums'>803</span>| [08/07/19 22:19:41] Updating Status</span></div>
+<div class='line'><span class='linenums'>804</span>| [08/07/19 22:19:44] </span><span class='red'>Pausing.</span></div>
+<div class='line'><span class='linenums'>805</span>| [08/07/19 22:20:08] Script default.dbj ended</span></div>
+<div class='line'><span class='linenums'>806</span>| [08/07/19 22:20:08] Script tools\toolsthread.js ended</span></div>
+<div class='line'><span class='linenums'>807</span>| [08/07/19 22:20:08] Script tools\mapthread.js ended</span></div>
+<div class='line'><span class='linenums'>808</span>| [08/07/19 22:20:08] Script tools\townchicken.js ended</span></div>
+<div class='line'><span class='linenums'>809</span>| [08/07/19 22:20:08] resume mapthread</span></div>
+<div class='line'><span class='linenums'>810</span>| [08/07/19 22:20:08] Script tools\party.js ended</span></div>
+<div class='line'><span class='linenums'>811</span>| [08/07/19 22:20:08] Script tools\maphelper.js ended</span></div>
+<div class='line'><span class='linenums'>812</span>| [08/07/19 22:20:08] </span><span class='yellow'>Map Thread Loaded</span></div>
+<div class='line'><span class='linenums'>813</span>| [08/07/19 22:20:08] </span><span class='green'>Fast pickit active.</span></div>
+<div class='line'><span class='linenums'>814</span>| [08/07/19 22:20:08] </span><span class='green'>Starting script: </span><span class='yellow'>Mausoleum</span></div>
+<div class='line'><span class='linenums'>815</span>| [08/07/19 22:20:08] </span><span class='green'>Loading MyStuff.js !</span></div>
+<div class='line'><span class='linenums'>816</span>| [08/07/19 22:20:08] </span><span class='green'>ToolsThread loaded!!</span></div>
+<div class='line'><span class='linenums'>817</span>| [08/07/19 22:20:08] </span><span class='blue'>Start ToolsThread script</span></div>
+<div class='line'><span class='linenums'>818</span>| [08/07/19 22:20:08] </span><span class='green'>Party thread loaded. Mode: Accept</span></div>
+<div class='line'><span class='linenums'>819</span>| [08/07/19 22:20:08] 0 entries in shit list.</span></div>
+<div class='line'><span class='linenums'>820</span>| [08/07/19 22:20:11] </span><span class='red'>Pausing.</span></div>
+<div class='line'><span class='linenums'>821</span>| [08/07/19 22:20:19] </span><span class='gold'>MF: </span><span class='white'>208 </span><span class='gold'>GF: </span><span class='white'>160 </span><span class='red'>FR: </span><span class='white'>175 </span><span class='blue'>CR: </span><span class='white'>210 </span><span class='yellow'>LR: </span><span class='white'>243 </span><span class='green'>PR: </span><span class='white'>240</span></div>
+<div class='line'><span class='linenums'>822</span>| [08/07/19 22:20:19] FCR: 105 IAS: 0 FBR: 0 FHR: 115 FRW: 35</span></div>
+<div class='line'><span class='linenums'>823</span>| [08/07/19 22:20:19] CB: 0 DS: 0 OW: 0 </span><span class='red'>LL: </span><span class='white'>10 </span><span class='blue'>ML: </span><span class='white'>10 DR: 0% + 0 MDR: 0% + 15</span></div>
+<div class='line'><span class='linenums'>824</span>| [08/07/19 22:20:19] My coord: 5318, 4894</span></div>
+<div class='line'><span class='linenums'>825</span>| [08/07/19 22:30:26] D2BS Shutdown complete.</span></div>
+<div class='line'><span class='linenums'>826</span>| [08/07/19 22:30:29] </span><span class='green'>D2BS</span><span class='white'> :: Started Console Script</span></div>
+<div class='line'><span class='linenums'>827</span>| [08/07/19 22:30:29] D2BS Engine startup complete. 1.5.1880U</span></div>
+<div class='line'><span class='linenums'>828</span>| [08/07/19 22:30:29] SP_GoldenDeth</span></div>
+<div class='line'><span class='linenums'>829</span>| [08/07/19 22:30:29] </span><span class='green'>D2BS</span><span class='white'> :: Engine startup complete!</span></div>
+<div class='line'><span class='linenums'>830</span>| [08/07/19 22:30:29] </span><span class='green'>D2BS</span><span class='white'> :: Switched to profile SP_GoldenDeth</span></div>
+<div class='line'><span class='linenums'>831</span>| [08/07/19 22:30:29] </span><span class='green'>D2BS</span><span class='white'> :: Starting D2BotLead.dbj</span></div>
+<div class='line'><span class='linenums'>832</span>| [08/07/19 22:30:29] </span><span class='green'>D2BS</span><span class='white'> :: D2BotLead.dbj running.</span></div>
+<div class='line'><span class='linenums'>833</span>| [08/07/19 22:30:30] Recieved Game Info</span></div>
+<div class='line'><span class='linenums'>834</span>| [08/07/19 22:30:30] Heartbeat loaded</span></div>
+<div class='line'><span class='linenums'>835</span>| [08/07/19 22:30:33] </span><span class='green'>D2BS</span><span class='white'> :: Starting default.dbj</span></div>
+<div class='line'><span class='linenums'>836</span>| [08/07/19 22:30:33] </span><span class='green'>D2BS</span><span class='white'> :: default.dbj running.</span></div>
+<div class='line'><span class='linenums'>837</span>| [08/07/19 22:30:33] </span><span class='green'>Fast pickit active.</span></div>
+<div class='line'><span class='linenums'>838</span>| [08/07/19 22:30:33] </span><span class='green'>Starting script: </span><span class='yellow'>Mausoleum</span></div>
+<div class='line'><span class='linenums'>839</span>| [08/07/19 22:30:33] </span><span class='yellow'>Map Thread Loaded</span></div>
+<div class='line'><span class='linenums'>840</span>| [08/07/19 22:30:33] </span><span class='green'>Party thread loaded. Mode: Accept</span></div>
+<div class='line'><span class='linenums'>841</span>| [08/07/19 22:30:33] 0 entries in shit list.</span></div>
+<div class='line'><span class='linenums'>842</span>| [08/07/19 22:30:33] </span><span class='green'>Loading MyStuff.js !</span></div>
+<div class='line'><span class='linenums'>843</span>| [08/07/19 22:30:33] </span><span class='green'>ToolsThread loaded!!</span></div>
+<div class='line'><span class='linenums'>844</span>| [08/07/19 22:30:33] </span><span class='blue'>Start ToolsThread script</span></div>
+<div class='line'><span class='linenums'>845</span>| [08/07/19 22:30:34] Updating Status</span></div>
+<div class='line'><span class='linenums'>846</span>| [08/07/19 22:30:35] </span><span class='red'>Pausing.</span></div>
+<div class='line'><span class='linenums'>847</span>| [08/07/19 22:30:44] Script default.dbj ended</span></div>
+<div class='line'><span class='linenums'>848</span>| [08/07/19 22:30:44] Script tools\toolsthread.js ended</span></div>
+<div class='line'><span class='linenums'>849</span>| [08/07/19 22:30:44] Script tools\mapthread.js ended</span></div>
+<div class='line'><span class='linenums'>850</span>| [08/07/19 22:30:44] Script tools\townchicken.js ended</span></div>
+<div class='line'><span class='linenums'>851</span>| [08/07/19 22:30:44] resume mapthread</span></div>
+<div class='line'><span class='linenums'>852</span>| [08/07/19 22:30:44] Script tools\party.js ended</span></div>
+<div class='line'><span class='linenums'>853</span>| [08/07/19 22:30:44] Script tools\maphelper.js ended</span></div>
+<div class='line'><span class='linenums'>854</span>| [08/07/19 22:30:44] </span><span class='yellow'>Map Thread Loaded</span></div>
+<div class='line'><span class='linenums'>855</span>| [08/07/19 22:30:44] </span><span class='green'>Fast pickit active.</span></div>
+<div class='line'><span class='linenums'>856</span>| [08/07/19 22:30:44] </span><span class='green'>Starting script: </span><span class='yellow'>Mausoleum</span></div>
+<div class='line'><span class='linenums'>857</span>| [08/07/19 22:30:44] </span><span class='green'>Loading MyStuff.js !</span></div>
+<div class='line'><span class='linenums'>858</span>| [08/07/19 22:30:44] </span><span class='green'>ToolsThread loaded!!</span></div>
+<div class='line'><span class='linenums'>859</span>| [08/07/19 22:30:44] </span><span class='blue'>Start ToolsThread script</span></div>
+<div class='line'><span class='linenums'>860</span>| [08/07/19 22:30:44] </span><span class='green'>Party thread loaded. Mode: Accept</span></div>
+<div class='line'><span class='linenums'>861</span>| [08/07/19 22:30:44] 0 entries in shit list.</span></div>
+<div class='line'><span class='linenums'>862</span>| [08/07/19 22:30:46] </span><span class='red'>Pausing.</span></div>
+<div class='line'><span class='linenums'>863</span>| [08/07/19 22:30:52] Script default.dbj ended</span></div>
+<div class='line'><span class='linenums'>864</span>| [08/07/19 22:30:52] Script tools\toolsthread.js ended</span></div>
+<div class='line'><span class='linenums'>865</span>| [08/07/19 22:30:52] Script tools\mapthread.js ended</span></div>
+<div class='line'><span class='linenums'>866</span>| [08/07/19 22:30:52] resume mapthread</span></div>
+<div class='line'><span class='linenums'>867</span>| [08/07/19 22:30:52] Script tools\townchicken.js ended</span></div>
+<div class='line'><span class='linenums'>868</span>| [08/07/19 22:30:52] Script tools\maphelper.js ended</span></div>
+<div class='line'><span class='linenums'>869</span>| [08/07/19 22:30:52] </span><span class='yellow'>Map Thread Loaded</span></div>
+<div class='line'><span class='linenums'>870</span>| [08/07/19 22:30:52] Script tools\party.js ended</span></div>
+<div class='line'><span class='linenums'>871</span>| [08/07/19 22:30:52] </span><span class='green'>Fast pickit active.</span></div>
+<div class='line'><span class='linenums'>872</span>| [08/07/19 22:30:52] </span><span class='green'>Loading MyStuff.js !</span></div>
+<div class='line'><span class='linenums'>873</span>| [08/07/19 22:30:52] </span><span class='green'>ToolsThread loaded!!</span></div>
+<div class='line'><span class='linenums'>874</span>| [08/07/19 22:30:52] </span><span class='blue'>Start ToolsThread script</span></div>
+<div class='line'><span class='linenums'>875</span>| [08/07/19 22:30:52] </span><span class='green'>Starting script: </span><span class='yellow'>Mausoleum</span></div>
+<div class='line'><span class='linenums'>876</span>| [08/07/19 22:30:52] </span><span class='green'>Party thread loaded. Mode: Accept</span></div>
+<div class='line'><span class='linenums'>877</span>| [08/07/19 22:30:52] 0 entries in shit list.</span></div>
+<div class='line'><span class='linenums'>878</span>| [08/07/19 22:30:54] </span><span class='red'>Pausing.</span></div>
+<div class='line'><span class='linenums'>879</span>| [08/07/19 23:33:29] D2BS Shutdown complete.</span></div>
+<div class='line'><span class='linenums'>880</span>| [08/07/19 23:33:31] </span><span class='green'>D2BS</span><span class='white'> :: Started Console Script</span></div>
+<div class='line'><span class='linenums'>881</span>| [08/07/19 23:33:31] D2BS Engine startup complete. 1.5.1880U</span></div>
+<div class='line'><span class='linenums'>882</span>| [08/07/19 23:33:31] SP_GoldenDeth</span></div>
+<div class='line'><span class='linenums'>883</span>| [08/07/19 23:33:31] </span><span class='green'>D2BS</span><span class='white'> :: Engine startup complete!</span></div>
+<div class='line'><span class='linenums'>884</span>| [08/07/19 23:33:31] </span><span class='green'>D2BS</span><span class='white'> :: Switched to profile SP_GoldenDeth</span></div>
+<div class='line'><span class='linenums'>885</span>| [08/07/19 23:33:31] </span><span class='green'>D2BS</span><span class='white'> :: Starting D2BotLead.dbj</span></div>
+<div class='line'><span class='linenums'>886</span>| [08/07/19 23:33:31] </span><span class='green'>D2BS</span><span class='white'> :: D2BotLead.dbj running.</span></div>
+<div class='line'><span class='linenums'>887</span>| [08/07/19 23:33:33] Recieved Game Info</span></div>
+<div class='line'><span class='linenums'>888</span>| [08/07/19 23:33:33] Heartbeat loaded</span></div>
+<div class='line'><span class='linenums'>889</span>| [08/07/19 23:33:35] </span><span class='green'>D2BS</span><span class='white'> :: Starting default.dbj</span></div>
+<div class='line'><span class='linenums'>890</span>| [08/07/19 23:33:35] </span><span class='green'>D2BS</span><span class='white'> :: default.dbj running.</span></div>
+<div class='line'><span class='linenums'>891</span>| [08/07/19 23:33:35] </span><span class='darkgreen'>[</span><span class='grey'>default</span><span class='darkgreen'>] (</span><span class='darkgreen'>main:182</span><span class='darkgreen'>):</span><span class='white'> </span><span class='green'>Fast pickit active.</span></div>
+<div class='line'><span class='linenums'>892</span>| [08/07/19 23:33:36] </span><span class='darkgreen'>[</span><span class='grey'>loader</span><span class='darkgreen'>] (</span><span class='darkgreen'>Loader.loadScripts:124</span><span class='darkgreen'>):</span><span class='white'> </span><span class='green'>Starting script: </span><span class='yellow'>Mausoleum</span></div>
+<div class='line'><span class='linenums'>893</span>| [08/07/19 23:33:36] </span><span class='yellow'>Map Thread Loaded</span></div>
+<div class='line'><span class='linenums'>894</span>| [08/07/19 23:33:36] </span><span class='darkgreen'>[</span><span class='grey'>party</span><span class='darkgreen'>] (</span><span class='darkgreen'>main:74</span><span class='darkgreen'>):</span><span class='white'> </span><span class='green'>Party thread loaded. Mode: Accept</span></div>
+<div class='line'><span class='linenums'>895</span>| [08/07/19 23:33:36] </span><span class='darkgreen'>[</span><span class='grey'>party</span><span class='darkgreen'>] (</span><span class='darkgreen'>main:79</span><span class='darkgreen'>):</span><span class='white'> 0 entries in shit list.</span></div>
+<div class='line'><span class='linenums'>896</span>| [08/07/19 23:33:36] </span><span class='green'>Loading MyStuff.js !</span></div>
+<div class='line'><span class='linenums'>897</span>| [08/07/19 23:33:36] </span><span class='green'>ToolsThread loaded!!</span></div>
+<div class='line'><span class='linenums'>898</span>| [08/07/19 23:33:36] </span><span class='blue'>Start ToolsThread script</span></div>
+<div class='line'><span class='linenums'>899</span>| [08/07/19 23:33:36] Updating Status</span></div>
+<div class='line'><span class='linenums'>900</span>| [08/07/19 23:33:37] </span><span class='darkgreen'>[</span><span class='grey'>toolsthread</span><span class='darkgreen'>] (</span><span class='darkgreen'>:160</span><span class='darkgreen'>):</span><span class='white'> </span><span class='red'>Pausing.</span></div>
+
+</div>
+
+<script src="../js/script.js"></script>
+
+</body>
+</html>

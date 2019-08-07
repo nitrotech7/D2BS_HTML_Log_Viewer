@@ -61,3 +61,54 @@
 	font-weight: 600;
 	text-rendering: optimizeLegibility;
 }
+
+
+
+@font-face {
+	font-family: MasonSerif;
+	src: url('../fonts/MasonSerif-Regular.ttf') format('truetype');
+	font-style: normal;
+	font-weight: 400;
+	text-rendering: optimizeLegibility;
+}
+
+@font-face {
+	font-family: MasonSerif;
+	src: url('../fonts/MasonSerif-Bold.ttf') format('truetype');
+	font-style: normal;
+	font-weight: 700;
+	text-rendering: optimizeLegibility;
+}
+
+
+@font-face {
+	font-family: MasonSans;
+	src: url('../fonts/MasonSans-Regular.ttf') format('truetype');
+	font-style: normal;
+	font-weight: 400;
+	text-rendering: optimizeLegibility;
+}
+
+@font-face {
+	font-family: MasonSans;
+	src: url('../fonts/MasonSans-Bold.ttf') format('truetype');
+	font-style: normal;
+	font-weight: 700;
+	text-rendering: optimizeLegibility;
+}
+
+@font-face {
+	font-family: Patriot;
+	src: url('../fonts/Patriot-Light.otf') format('opentype');
+	font-style: normal;
+	font-weight: 300;
+	text-rendering: optimizeLegibility;
+}
+
+@font-face {
+	font-family: Patriot;
+	src: url('../fonts/Patriot-Heavy.otf') format('opentype');
+	font-style: normal;
+	font-weight: 800;
+	text-rendering: optimizeLegibility;
+}

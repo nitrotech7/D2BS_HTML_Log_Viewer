@@ -1,9 +1,14 @@
 @echo off
 
-setlocal enableextensions enabledelayedexpansion
+setlocal EnableDelayedExpansion
 REM You always have to use SETLOCAL ENABLEDELAYEDEXPANSION and !...! instead of %...% when working with variables which are modified inside a loop.
 
 if exist ..\d2bs.log (
+
+	for /f "tokens=2-4 delims=/ " %%a in ('date /t') do (set mydate=%%c_%%a_%%b)
+	for /f "tokens=1-3 delims=/:" %%a in ("%TIME: =0%") do (set mytime=%%a_%%b_%%c)
+	set "_datetime=!mydate!_!mytime!"
+	echo !_datetime!
 
 	:: Set line parsing method to 1 or 2
 	echo Set line parsing method to 1 or 2
@@ -34,14 +39,14 @@ if exist ..\d2bs.log (
 	:: Regex the file for proper html output (ie. converting game color codes to CSS classes)
 	bin\sed -E -f sed.sh d2bs_part2.log > d2bs_edited.html
 
-	:: Prepend html/css/fonts/pix data to our html log file
-	type _header.html d2bs_edited.html _footer.html > d2bs_lines_!_lines!.html
+	:: Attach the header and footer htmls to our html log file
+	type _header.html d2bs_edited.html _footer.html > logs\d2bs_lines_!_lines!_!_datetime!.html
 
 	:: Clean up junk files
 	del d2bs_part.log d2bs_part2.log d2bs_edited.html
 
 	:: Launch parse log html in Chrome browser
-	start chrome ./d2bs_lines_!_lines!.html
+	start chrome logs\d2bs_lines_!_lines!_!_datetime!.html
 ) else (
    echo Couldnt find d2bs.log. Make sure you placed this folder in your d2bs folder!
 )
