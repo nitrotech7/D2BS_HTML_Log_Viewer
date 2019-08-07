@@ -34,7 +34,7 @@ if exist ..\d2bs.log (
 	
 
 	:: Add line numbers to file  http://tuxthink.blogspot.com/2012/01/adding-line-numbers-to-file.html
-	bin\sed "/./=" d2bs_part.log | sed "/./N; s/\n/\| /" > d2bs_part2.log
+	bin\sed "/./=" d2bs_part.log | bin\sed "/./N; s/\n/\| /" > d2bs_part2.log
 
 	:: Regex the file for proper html output (ie. converting game color codes to CSS classes)
 	bin\sed -E -f sed.sh d2bs_part2.log > d2bs_edited.html
