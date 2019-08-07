@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>D2BS Log HTML Viewer</title>
+</head>
+
+<link rel="stylesheet" href="../css/fonts.css">
+<link rel="stylesheet" href="../css/style.css">
+
+<body>
+
+<div id="info" style="display: none;">
+	Parses d2bs.log into html form, converting game text color codes into CSS classes for easier viewing in the web browser.
+	
+	ABOUT:
+	-----------
+	I made this tool for easier viewing of the d2bs.log file, which is basically whatever is outputed in the console during botting. Since d2bs has no debugger (unfortunately), if you are making custom kolbot scripts you often have to use print() commands to know wtf your bot is actually doing. You can view the console in game by pressing the Home key, but the text is terribly hard to read and analyze (D2 is a 20 year old so resolution sucks bad). So to make it easier to analyze the console output I created this niffty tool that parses the log file (according to the amount of lines you want it to return), replaces the in-game color codes to CSS color classes and outputs an html file that auto opens in Chrome after finishing (~2 sec). 
+
+	USAGE:
+	-----------
+	Place the master folder in your d2bs folder (ie. D:\Games\D2kolbot\trunk\d2bs\d2bs_log_html_viewer). Open d2bs_log_parser.bat in a text editor and configure how you want the lines to be parsed (last X lines -OR- from line X to line Y). When done, save it and run it. The html file will automatically open in Chrome (change to whatever web browser you use in the batch file).
+
+	Enjoy :) See screenshots for examples.
+</div>
+
+<div id="info_button" onclick="showHideID('info')"></div>
+<h1>D2BS Html Log Viewer</h1>
+<div id='changeBg'></div>
+
+<div id='d2bsLoadLog'><div class='line'><span class='linenums'>1</span>| [08/07/19 22:30:44] </span><span class='green'>Starting script: </span><span class='yellow'>Mausoleum</span></div>
+<div class='line'><span class='linenums'>2</span>| [08/07/19 22:30:44] </span><span class='green'>Loading MyStuff.js !</span></div>
+<div class='line'><span class='linenums'>3</span>| [08/07/19 22:30:44] </span><span class='green'>ToolsThread loaded!!</span></div>
+<div class='line'><span class='linenums'>4</span>| [08/07/19 22:30:44] </span><span class='blue'>Start ToolsThread script</span></div>
+<div class='line'><span class='linenums'>5</span>| [08/07/19 22:30:44] </span><span class='green'>Party thread loaded. Mode: Accept</span></div>
+<div class='line'><span class='linenums'>6</span>| [08/07/19 22:30:44] 0 entries in shit list.</span></div>
+<div class='line'><span class='linenums'>7</span>| [08/07/19 22:30:46] </span><span class='red'>Pausing.</span></div>
+<div class='line'><span class='linenums'>8</span>| [08/07/19 22:30:52] Script default.dbj ended</span></div>
+<div class='line'><span class='linenums'>9</span>| [08/07/19 22:30:52] Script tools\toolsthread.js ended</span></div>
+<div class='line'><span class='linenums'>10</span>| [08/07/19 22:30:52] Script tools\mapthread.js ended</span></div>
+<div class='line'><span class='linenums'>11</span>| [08/07/19 22:30:52] resume mapthread</span></div>
+<div class='line'><span class='linenums'>12</span>| [08/07/19 22:30:52] Script tools\townchicken.js ended</span></div>
+<div class='line'><span class='linenums'>13</span>| [08/07/19 22:30:52] Script tools\maphelper.js ended</span></div>
+<div class='line'><span class='linenums'>14</span>| [08/07/19 22:30:52] </span><span class='yellow'>Map Thread Loaded</span></div>
+<div class='line'><span class='linenums'>15</span>| [08/07/19 22:30:52] Script tools\party.js ended</span></div>
+<div class='line'><span class='linenums'>16</span>| [08/07/19 22:30:52] </span><span class='green'>Fast pickit active.</span></div>
+<div class='line'><span class='linenums'>17</span>| [08/07/19 22:30:52] </span><span class='green'>Loading MyStuff.js !</span></div>
+<div class='line'><span class='linenums'>18</span>| [08/07/19 22:30:52] </span><span class='green'>ToolsThread loaded!!</span></div>
+<div class='line'><span class='linenums'>19</span>| [08/07/19 22:30:52] </span><span class='blue'>Start ToolsThread script</span></div>
+<div class='line'><span class='linenums'>20</span>| [08/07/19 22:30:52] </span><span class='green'>Starting script: </span><span class='yellow'>Mausoleum</span></div>
+<div class='line'><span class='linenums'>21</span>| [08/07/19 22:30:52] </span><span class='green'>Party thread loaded. Mode: Accept</span></div>
+<div class='line'><span class='linenums'>22</span>| [08/07/19 22:30:52] 0 entries in shit list.</span></div>
+<div class='line'><span class='linenums'>23</span>| [08/07/19 22:30:54] </span><span class='red'>Pausing.</span></div>
+<div class='line'><span class='linenums'>24</span>| [08/07/19 23:33:29] D2BS Shutdown complete.</span></div>
+<div class='line'><span class='linenums'>25</span>| [08/07/19 23:33:31] </span><span class='green'>D2BS</span><span class='white'> :: Started Console Script</span></div>
+<div class='line'><span class='linenums'>26</span>| [08/07/19 23:33:31] D2BS Engine startup complete. 1.5.1880U</span></div>
+<div class='line'><span class='linenums'>27</span>| [08/07/19 23:33:31] SP_GoldenDeth</span></div>
+<div class='line'><span class='linenums'>28</span>| [08/07/19 23:33:31] </span><span class='green'>D2BS</span><span class='white'> :: Engine startup complete!</span></div>
+<div class='line'><span class='linenums'>29</span>| [08/07/19 23:33:31] </span><span class='green'>D2BS</span><span class='white'> :: Switched to profile SP_GoldenDeth</span></div>
+<div class='line'><span class='linenums'>30</span>| [08/07/19 23:33:31] </span><span class='green'>D2BS</span><span class='white'> :: Starting D2BotLead.dbj</span></div>
+<div class='line'><span class='linenums'>31</span>| [08/07/19 23:33:31] </span><span class='green'>D2BS</span><span class='white'> :: D2BotLead.dbj running.</span></div>
+<div class='line'><span class='linenums'>32</span>| [08/07/19 23:33:33] Recieved Game Info</span></div>
+<div class='line'><span class='linenums'>33</span>| [08/07/19 23:33:33] Heartbeat loaded</span></div>
+<div class='line'><span class='linenums'>34</span>| [08/07/19 23:33:35] </span><span class='green'>D2BS</span><span class='white'> :: Starting default.dbj</span></div>
+<div class='line'><span class='linenums'>35</span>| [08/07/19 23:33:35] </span><span class='green'>D2BS</span><span class='white'> :: default.dbj running.</span></div>
+<div class='line'><span class='linenums'>36</span>| [08/07/19 23:33:35] </span><span class='darkgreen'>[</span><span class='grey'>default</span><span class='darkgreen'>] (</span><span class='darkgreen'>main:182</span><span class='darkgreen'>):</span><span class='white'> </span><span class='green'>Fast pickit active.</span></div>
+<div class='line'><span class='linenums'>37</span>| [08/07/19 23:33:36] </span><span class='darkgreen'>[</span><span class='grey'>loader</span><span class='darkgreen'>] (</span><span class='darkgreen'>Loader.loadScripts:124</span><span class='darkgreen'>):</span><span class='white'> </span><span class='green'>Starting script: </span><span class='yellow'>Mausoleum</span></div>
+<div class='line'><span class='linenums'>38</span>| [08/07/19 23:33:36] </span><span class='yellow'>Map Thread Loaded</span></div>
+<div class='line'><span class='linenums'>39</span>| [08/07/19 23:33:36] </span><span class='darkgreen'>[</span><span class='grey'>party</span><span class='darkgreen'>] (</span><span class='darkgreen'>main:74</span><span class='darkgreen'>):</span><span class='white'> </span><span class='green'>Party thread loaded. Mode: Accept</span></div>
+<div class='line'><span class='linenums'>40</span>| [08/07/19 23:33:36] </span><span class='darkgreen'>[</span><span class='grey'>party</span><span class='darkgreen'>] (</span><span class='darkgreen'>main:79</span><span class='darkgreen'>):</span><span class='white'> 0 entries in shit list.</span></div>
+<div class='line'><span class='linenums'>41</span>| [08/07/19 23:33:36] </span><span class='green'>Loading MyStuff.js !</span></div>
+<div class='line'><span class='linenums'>42</span>| [08/07/19 23:33:36] </span><span class='green'>ToolsThread loaded!!</span></div>
+<div class='line'><span class='linenums'>43</span>| [08/07/19 23:33:36] </span><span class='blue'>Start ToolsThread script</span></div>
+<div class='line'><span class='linenums'>44</span>| [08/07/19 23:33:36] Updating Status</span></div>
+<div class='line'><span class='linenums'>45</span>| [08/07/19 23:33:37] </span><span class='darkgreen'>[</span><span class='grey'>toolsthread</span><span class='darkgreen'>] (</span><span class='darkgreen'>:160</span><span class='darkgreen'>):</span><span class='white'> </span><span class='red'>Pausing.</span></div>
+<div class='line'><span class='linenums'>46</span>| [08/07/19 23:50:37] </span><span class='darkgreen'>[</span><span class='grey'>toolsthread</span><span class='darkgreen'>] (</span><span class='darkgreen'>:169</span><span class='darkgreen'>):</span><span class='white'> </span><span class='green'>Resuming.</span></div>
+<div class='line'><span class='linenums'>47</span>| [08/07/19 23:50:37] </span><span class='darkgreen'>[</span><span class='grey'>pather</span><span class='darkgreen'>] (</span><span class='darkgreen'>useWaypoint:962</span><span class='darkgreen'>):</span><span class='white'> waypoint retry 1</span></div>
+<div class='line'><span class='linenums'>48</span>| [08/07/19 23:50:37] </span><span class='darkgreen'>[</span><span class='grey'>toolsthread</span><span class='darkgreen'>] (</span><span class='darkgreen'>:160</span><span class='darkgreen'>):</span><span class='white'> </span><span class='red'>Pausing.</span></div>
+<div class='line'><span class='linenums'>49</span>| [08/07/19 23:50:38] </span><span class='darkgreen'>[</span><span class='grey'>toolsthread</span><span class='darkgreen'>] (</span><span class='darkgreen'>:169</span><span class='darkgreen'>):</span><span class='white'> </span><span class='green'>Resuming.</span></div>
+<div class='line'><span class='linenums'>50</span>| [08/07/19 23:50:40] </span><span class='darkgreen'>[</span><span class='grey'>toolsthread</span><span class='darkgreen'>] (</span><span class='darkgreen'>:160</span><span class='darkgreen'>):</span><span class='white'> </span><span class='red'>Pausing.</span></div>
+
+</div>
+
+<script src="../js/script.js"></script>
+
+</body>
+</html>
