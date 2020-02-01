@@ -9,8 +9,19 @@ Place the master folder in your d2bs folder (ie. D:\Games\kolbot\trunk\d2bs\D2BS
 You can alternatively use the "prompt" version (D2BS_HTML_Log_Viewer_Prompt.bat) where it will ask you which method you want to use and the lines/line numbers to extract.
 
 To use ```D2BotManagerConsole_Viewer_Last_1000.bat```
-add ```Misc.fileAction("logs/D2BotManagerConsole.log", 2, finalMsg);``` 
+add ```Misc.fileAction("logs/D2BotManagerConsole.log", 2, msg);``` 
 to ```printToConsole``` function in ```OOG.js```
+
+I added mine with colors and date like this:
+```
+var D2BotColors = MyFunctions.SwapObjectKeyValue(MySDK.D2BotColors);
+var msgColor = MySDK.Color[D2BotColors[color]];
+var fullDateTime = Experience.getFullDateTime();
+var finalMsg = fullDateTime+" "+msgColor+msg+"\n";
+
+Misc.fileAction("logs/D2BotManagerConsole.log", 2, finalMsg);
+```
+
 
 ### Sample screenshot:
 
