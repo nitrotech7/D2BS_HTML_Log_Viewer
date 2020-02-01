@@ -26,3 +26,4 @@ Misc.fileAction("logs/D2BotManagerConsole.log", 2, finalMsg);
 ### Sample screenshot:
 
 ![Imgur](https://i.imgur.com/cR0ai3b.png)
+![Imgur](https://i.imgur.com/1SkwkAg.jpg)
