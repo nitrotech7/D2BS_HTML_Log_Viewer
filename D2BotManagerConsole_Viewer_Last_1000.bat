@@ -3,8 +3,6 @@
 setlocal EnableDelayedExpansion
 REM You always have to use SETLOCAL ENABLEDELAYEDEXPANSION and !...! instead of %...% when working with variables which are modified inside a loop.
 
-REM I:\Games\D2_kolbot_Dec_2019\trunk\D2BotManagerConsole\kolbot\logs
-
 set "_file=..\kolbot\logs\D2BotManagerConsole.log"
 
 
