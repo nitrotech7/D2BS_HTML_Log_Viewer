@@ -8,6 +8,10 @@ I made this tool for easier viewing of the d2bs.log file, which is basically wha
 Place the master folder in your d2bs folder (ie. D:\Games\kolbot\trunk\d2bs\D2BS_HTML_Log_Viewer). Open D2BS_HTML_Log_Viewer.bat in a text editor and set the parsing method to 1 or 2 based on how you want to parse the log file: last X lines -OR- from line X to line Y. Then configure these numbers to whatever line numbers you want to parse. When done, save it and run it. The html file will automatically open in Chrome (change to whatever web browser you use in the batch file).
 You can alternatively use the "prompt" version (D2BS_HTML_Log_Viewer_Prompt.bat) where it will ask you which method you want to use and the lines/line numbers to extract.
 
+To use ```D2BotManagerConsole_Viewer_Last_1000.bat```
+add ```Misc.fileAction("logs/D2BotManagerConsole.log", 2, finalMsg);``` 
+to ```printToConsole``` function in ```OOG.js```
+
 ### Sample screenshot:
 
 ![Imgur](https://i.imgur.com/cR0ai3b.png)
