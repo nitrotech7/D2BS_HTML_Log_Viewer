@@ -25,5 +25,8 @@ Misc.fileAction("logs/D2BotManagerConsole.log", 2, finalMsg);
 
 ### Sample screenshot:
 
+D2BS Console from inside game
 ![Imgur](https://i.imgur.com/cR0ai3b.png)
+
+D2Bot Manager Console
 ![Imgur](https://i.imgur.com/1SkwkAg.jpg)
